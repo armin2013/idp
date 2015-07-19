@@ -35,15 +35,10 @@ public class EdgeAndNodeTypePopup extends MyPopup{
 
 	private JPanel NodePanel;
 	private JPanel EdgePanel;
-	private GraphVisualization graphViz;
 	private CheckBoxTree tree;
-	private MasterFilter masterFilter;
-	
 	public EdgeAndNodeTypePopup(GraphVisualization graphViz, MasterFilter masterFilter)
 	{
-		this.graphViz = graphViz;
 		this.tree = new CheckBoxTree();
-		this.masterFilter = masterFilter;
 	}
 	/**
 	 * Evaluate the Popup after the users input
@@ -72,8 +67,7 @@ public class EdgeAndNodeTypePopup extends MyPopup{
         		}	
         	}
         	
-        	LinkedList<MyEdgeType> selectedEdges = tree.evalTree();
-    		
+   		
         	//graphViz.applyNodeAndEdgeFilter(selectedNodes, selectedEdges, null);
         	//FIXME IF every used add Edge Operations here
     	}

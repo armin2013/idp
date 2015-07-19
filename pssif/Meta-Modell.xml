@@ -1,1 +1,367 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><COMPONENTS><CONJUNCTIONS><CONJUNCTION Name="XOR" Tag="ENUM_CONJUNCTION_XOR"/><CONJUNCTION Name="a" Tag="a"/><CONJUNCTION Name="AND" Tag="ENUM_CONJUNCTION_AND"/><CONJUNCTION Name="Conjunction" Tag="ENUM_CONJUNCTION"/><CONJUNCTION Name="OR" Tag="ENUM_CONJUNCTION_OR"/></CONJUNCTIONS><NODES><NODE Name="Software" Parent="Block" Tag="N_SOFTWARE"/><NODE Name="Service" Parent="Block" Tag="N_SERVICE"/><NODE Name="Activity Diagramm" Parent="Specification Artifact" Tag="N_ACTIVITY_D"/><NODE Name="Principal" Parent="Actor" Tag="N_PRINCIPAL"/><NODE Name="MechanicPort" Parent="Port" Tag="N_PORT_MECHANIC"/><NODE Name="Author" Parent="Actor" Tag="N_AUTHOR"/><NODE Name="Class Diagramm" Parent="Specification Artifact" Tag="N_CLASS_D"/><NODE Name="Change Proposal" Parent="Event" Tag="N_CHANGE_PROPOSAL"/><NODE Name="Module" Parent="Block" Tag="N_MODULE"/><NODE Name="ElectronicPort" Parent="Port" Tag="N_PORT_ELECTRONIC"/><NODE Name="View" Parent="Development Artifact" Tag="N_VIEW"/><NODE Name="Issue" Parent="Event" Tag="N_ISSUE"/><NODE Name="Decision" Parent="Event" Tag="N_DECISION"/><NODE Name="Actor" Parent="Block" Tag="N_ACTOR"/><NODE Name="Requirement" Parent="Development Artifact" Tag="N_REQUIREMENT"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="priority"/><SELECTEDATTRIBUTE Name="type"/><SELECTEDATTRIBUTE Name="Abstraction Level"/></SELECTEDATTRIBUTES></NODE><NODE Name="ER-Diagramm" Parent="Specification Artifact" Tag="N_ER_D"/><NODE Name="Functionality" Parent="Development Artifact" Tag="N_FUNCTIONALITY"/><NODE Name="State Diagramm" Parent="Specification Artifact" Tag="N_STATE_D"/><NODE Name="Block" Parent="Solution Artifact" Tag="N_BLOCK"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="cost"/></SELECTEDATTRIBUTES></NODE><NODE Name="Electronic" Parent="Hardware" Tag="N_ELECTRONIC"/><NODE Name="Solution Artifact" Tag="N_SOL_ARTIFACT"/><NODE Name="Scenario" Parent="Specification Artifact" Tag="N_SCENARIO"/><NODE Name="Change Event" Parent="Event" Tag="N_CHANGE_EVENT"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="weight"/></SELECTEDATTRIBUTES></NODE><NODE Name="Development Artifact" Tag="N_DEV_ARTIFACT"/><NODE Name="Sequence Diagramm" Parent="Specification Artifact" Tag="N_SEQ_D"/><NODE Name="Event" Parent="Development Artifact" Tag="N_EVENT"/><NODE Name="Function" Parent="Solution Artifact" Tag="N_FUNCTION"/><NODE Name="Use Case Diagramm" Parent="Specification Artifact" Tag="N_USE_CASE_D"/><NODE Name="Test Case" Parent="Development Artifact" Tag="N_TEST_CASE"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="status"/><SELECTEDATTRIBUTE Name="verified attribute"/><SELECTEDATTRIBUTE Name="operator"/><SELECTEDATTRIBUTE Name="value"/></SELECTEDATTRIBUTES></NODE><NODE Name="Conjunction" Tag="N_CONJUNCTION"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="Conjunction"/></SELECTEDATTRIBUTES></NODE><NODE Name="Mechanic" Parent="Hardware" Tag="N_MECHANIC"/><NODE Name="Text" Parent="Specification Artifact" Tag="N_TEXT"/><NODE Name="SoftwarePort" Parent="Port" Tag="N_PORT_SOFTWARE"/><NODE Name="Port" Tag="N_PORT"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="conjugated"/><SELECTEDATTRIBUTE Name="direction"/><SELECTEDATTRIBUTE Name="dataType"/></SELECTEDATTRIBUTES></NODE><NODE Name="Use Case" Parent="Development Artifact" Tag="N_USE_CASE"/><NODE Name="Activity" Parent="Function" Tag="N_ACTIVITY"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="duration"/></SELECTEDATTRIBUTES></NODE><NODE Name="State" Parent="Function" Tag="N_STATE"/><NODE Name="Hardware" Parent="Block" Tag="N_HARDWARE"><SELECTEDATTRIBUTES><SELECTEDATTRIBUTE Name="weight"/></SELECTEDATTRIBUTES></NODE><NODE Name="EPK-Diagramm" Parent="Specification Artifact" Tag="N_EPK_D"/><NODE Name="Specification Artifact" Parent="Development Artifact" Tag="N_SPEC_ARTIFACT"/></NODES><EDGES><EDGE Name="Flow" Tag="E_FLOW"><MAPPINGS><MAPPING From="Solution Artifact" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Control Flow" Parent="Flow" Tag="E_FLOW_CONTROL"><MAPPINGS><MAPPING From="Function" To="Function"/></MAPPINGS></EDGE><EDGE Name="Verifies" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_VERIFIES"><MAPPINGS><MAPPING From="Test Case" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Realizes" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REALIZES"/><EDGE Name="Describes" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_DESCRIBES"/><EDGE Name="Accounts For" Parent="Attributional Relation" Tag="E_RELATIONSHIP_ATTRIBUTIONAL_ACCOUNTS_FOR"/><EDGE Name="Requires" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REQUIRES"/><EDGE Name="fulfills" Tag="E_FULFILS"><MAPPINGS><MAPPING From="Block" To="Functionality"/></MAPPINGS></EDGE><EDGE Name="Uses" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_USES"/><EDGE Name="Leads To" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_LEADS_TO"><MAPPINGS><MAPPING From="Test Case" To="Event"/><MAPPING From="Event" To="Event"/></MAPPINGS></EDGE><EDGE Name="Defines" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_DEFINES"><MAPPINGS><MAPPING From="Specification Artifact" To="Requirement"/></MAPPINGS></EDGE><EDGE Name="isMandatoryFor" Tag="E_IS_MANDATORY_FOR"><MAPPINGS><MAPPING From="Port" To="Functionality"/></MAPPINGS></EDGE><EDGE Name="Contains" Parent="Inclusion Relation" Tag="E_RELATIONSHIP_INCLUSION_CONTAINS"><MAPPINGS><MAPPING From="Specification Artifact" To="Node"/><MAPPING From="Module" To="Port"/><MAPPING From="Mechanic" To="MechanicPort"/><MAPPING From="Electronic" To="Port"/><MAPPING From="Software" To="SoftwarePort"/><MAPPING From="Block" To="Block"/></MAPPINGS></EDGE><EDGE Name="Creates" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_CREATES"><MAPPINGS><MAPPING From="Author" To="Requirement"/></MAPPINGS></EDGE><EDGE Name="Inclusion Relation" Parent="Relationship" Tag="E_RELATIONSHIP_INCLUSION"/><EDGE Name="Material Flow" Parent="Flow" Tag="E_FLOW_MATERIAL"><MAPPINGS><MAPPING From="Solution Artifact" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Includes" Parent="Inclusion Relation" Tag="E_RELATIONSHIP_INCLUSION_INCLUDES"/><EDGE Name="Satisfies" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_SATISFIES"><MAPPINGS><MAPPING From="Solution Artifact" To="Requirement"/></MAPPINGS></EDGE><EDGE Name="Requests" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REQUESTS"><MAPPINGS><MAPPING From="Principal" To="Requirement"/></MAPPINGS></EDGE><EDGE Name="Generalizes" Parent="Inclusion Relation" Tag="E_RELATIONSHIP_INCLUSION_GENERALIZES"/><EDGE Name="Overlaps" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_OVERLAPS"/><EDGE Name="Extends" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_EXTENDS"/><EDGE Name="Precondition" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_PRECONDITION"/><EDGE Name="isConnectedTo" Tag="E_IS_CONNECTED_TO"><MAPPINGS><MAPPING From="ElectronicPort" To="ElectronicPort"/><MAPPING From="MechanicPort" To="MechanicPort"/><MAPPING From="SoftwarePort" To="SoftwarePort"/></MAPPINGS></EDGE><EDGE Name="Trace" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_TRACE"/><EDGE Name="Chronological Relation" Parent="Relationship" Tag="E_RELATIONSHIP_CHRONOLOGICAL"/><EDGE Name="equals" Tag="E_EQUALS"><MAPPINGS><MAPPING From="Node" To="Node"/></MAPPINGS></EDGE><EDGE Name="Causal Relation" Parent="Relationship" Tag="E_RELATIONSHIP_CAUSAL"/><EDGE Name="Based On" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_BASED_ON"><MAPPINGS><MAPPING From="Requirement" To="Requirement"/><MAPPING From="Test Case" To="Requirement"/><MAPPING From="Requirement" To="Change Event"/><MAPPING From="Solution Artifact" To="Change Event"/></MAPPINGS></EDGE><EDGE Name="Evolves To" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_EVOLVES_TO"><MAPPINGS><MAPPING From="Requirement" To="Requirement"/><MAPPING From="Solution Artifact" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Replaces" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_REPLACES"/><EDGE Name="Logical Relation" Parent="Relationship" Tag="E_RELATIONSHIP_LOGICAL"/><EDGE Name="Attributional Relation" Parent="Relationship" Tag="E_RELATIONSHIP_ATTRIBUTIONAL"/><EDGE Name="Implements" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_IMPLEMENTS"/><EDGE Name="Referential Relation" Parent="Relationship" Tag="E_RELATIONSHIP_REFERENTIAL"><MAPPINGS><MAPPING From="Event" To="Event"/></MAPPINGS></EDGE><EDGE Name="Information Flow" Parent="Flow" Tag="E_FLOW_INFORMATION"><MAPPINGS><MAPPING From="Solution Artifact" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Avoids" Parent="Attributional Relation" Tag="E_RELATIONSHIP_ATTRIBUTIONAL_AVOIDS"/><EDGE Name="Is Alternative" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_IS_ALTERNATIVE"/><EDGE Name="Relationship" Tag="E_RELATIONSHIP"><MAPPINGS><MAPPING From="Requirement" To="Requirement"/><MAPPING From="Function" To="Node"/><MAPPING From="Node" To="Function"/></MAPPINGS></EDGE><EDGE Name="Refines" Parent="Chronological Relation" Tag="E_RELATIONSHIP_CHRONOLOGICAL_REFINES"/><EDGE Name="Performs" Parent="Attributional Relation" Tag="E_RELATIONSHIP_ATTRIBUTIONAL_PERFORMS"><MAPPINGS><MAPPING From="Node" To="Node"/></MAPPINGS></EDGE><EDGE Name="Value Flow" Parent="Flow" Tag="E_FLOW_VALUE"/><EDGE Name="Energy Flow" Parent="Flow" Tag="E_FLOW_ENERGY"><MAPPINGS><MAPPING From="Solution Artifact" To="Solution Artifact"/></MAPPINGS></EDGE><EDGE Name="Conflicts" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_CONFLICTS"/></EDGES><ATTRIBUTES><ATTRIBUTE Name="weight" Tag="A_HARDWARE_WEIGHT"><GROUP Value="defaultGroup"/><DATATYPE Value="BigDecimal"/><VISIBLE Value="true"/><CATEGORY Value="Weight"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="b" Tag="b"><GROUP Value="defaultGroup"/><DATATYPE Value="BigInteger"/><VISIBLE Value="false"/><CATEGORY Value="Time"/><UNIT Value="Kelvin"/></ATTRIBUTE><ATTRIBUTE Name="test" Tag="test2"><GROUP Value="defaultGroup"/><DATATYPE Value="BigDecimal"/><VISIBLE Value="false"/><CATEGORY Value="Density"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="status" Tag="A_TEST_CASE_STATUS"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="Abstraction Level" Tag="A_REQUIREMENT_ABS_LEVEL"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="direction" Tag="A_DIRECTION"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="Time"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="Conjunction" Tag="A_CONJUNCTION"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="type" Tag="A_REQUIREMENT_TYPE"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="cost" Tag="A_BLOCK_COST"><GROUP Value="defaultGroup"/><DATATYPE Value="BigDecimal"/><VISIBLE Value="true"/><CATEGORY Value="Monetary"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="operator" Tag="A_TEST_CASE_CONDITION_OP"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="conjugated" Tag="A_CONJUGATED"><GROUP Value="defaultGroup"/><DATATYPE Value="Boolean"/><VISIBLE Value="true"/><CATEGORY Value="Time"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="dataType" Tag="A_DATA_TYPE"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="Time"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="duration" Tag="A_DURATION"><GROUP Value="defaultGroup"/><DATATYPE Value="BigInteger"/><VISIBLE Value="true"/><CATEGORY Value="Time"/><UNIT Value="Second"/></ATTRIBUTE><ATTRIBUTE Name="priority" Tag="A_REQUIREMENT_PRIORITY"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="value" Tag="A_TEST_CASE_CONDITION_VALUE"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE><ATTRIBUTE Name="verified attribute" Tag="A_TEST_CASE_CONDITION_ATTRIBUTE"><GROUP Value="defaultGroup"/><DATATYPE Value="String"/><VISIBLE Value="true"/><CATEGORY Value="MetaData"/><UNIT Value="none"/></ATTRIBUTE></ATTRIBUTES></COMPONENTS>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<COMPONENTS>
+	<CONJUNCTIONS>
+		<CONJUNCTION Name="XOR" Tag="ENUM_CONJUNCTION_XOR" />
+		<CONJUNCTION Name="a" Tag="a" />
+		<CONJUNCTION Name="AND" Tag="ENUM_CONJUNCTION_AND" />
+		<CONJUNCTION Name="Conjunction" Tag="ENUM_CONJUNCTION" />
+		<CONJUNCTION Name="OR" Tag="ENUM_CONJUNCTION_OR" />
+	</CONJUNCTIONS>
+	<NODES>
+		<NODE Name="Software" Parent="Block" Tag="N_SOFTWARE" />
+		<NODE Name="Service" Parent="Block" Tag="N_SERVICE" />
+		<NODE Name="Activity Diagramm" Parent="Specification Artifact"
+			Tag="N_ACTIVITY_D" />
+		<NODE Name="Principal" Parent="Actor" Tag="N_PRINCIPAL" />
+		<NODE Name="MechanicPort" Parent="Port" Tag="N_PORT_MECHANIC" />
+		<NODE Name="Author" Parent="Actor" Tag="N_AUTHOR" />
+		<NODE Name="Class Diagramm" Parent="Specification Artifact" Tag="N_CLASS_D" />
+		<NODE Name="Change Proposal" Parent="Event" Tag="N_CHANGE_PROPOSAL" />
+		<NODE Name="Module" Parent="Block" Tag="N_MODULE" />
+		<NODE Name="ElectronicPort" Parent="Port" Tag="N_PORT_ELECTRONIC" />
+		<NODE Name="View" Parent="Development Artifact" Tag="N_VIEW" />
+		<NODE Name="Issue" Parent="Event" Tag="N_ISSUE" />
+		<NODE Name="Decision" Parent="Event" Tag="N_DECISION" />
+		<NODE Name="Actor" Parent="Block" Tag="N_ACTOR" />
+		<NODE Name="Requirement" Parent="Development Artifact" Tag="N_REQUIREMENT">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="priority" />
+				<SELECTEDATTRIBUTE Name="type" />
+				<SELECTEDATTRIBUTE Name="Abstraction Level" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="ER-Diagramm" Parent="Specification Artifact" Tag="N_ER_D" />
+		<NODE Name="Functionality" Parent="Development Artifact" Tag="N_FUNCTIONALITY" />
+		<NODE Name="State Diagramm" Parent="Specification Artifact" Tag="N_STATE_D" />
+		<NODE Name="Block" Parent="Solution Artifact" Tag="N_BLOCK">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="cost" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="Electronic" Parent="Hardware" Tag="N_ELECTRONIC" />
+		<NODE Name="Solution Artifact" Tag="N_SOL_ARTIFACT" />
+		<NODE Name="Scenario" Parent="Specification Artifact" Tag="N_SCENARIO" />
+		<NODE Name="Change Event" Parent="Event" Tag="N_CHANGE_EVENT">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="weight" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="Development Artifact" Tag="N_DEV_ARTIFACT" />
+		<NODE Name="Sequence Diagramm" Parent="Specification Artifact"
+			Tag="N_SEQ_D" />
+		<NODE Name="Event" Parent="Development Artifact" Tag="N_EVENT" />
+		<NODE Name="Function" Parent="Solution Artifact" Tag="N_FUNCTION" />
+		<NODE Name="Use Case Diagramm" Parent="Specification Artifact"
+			Tag="N_USE_CASE_D" />
+		<NODE Name="Test Case" Parent="Development Artifact" Tag="N_TEST_CASE">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="status" />
+				<SELECTEDATTRIBUTE Name="verified attribute" />
+				<SELECTEDATTRIBUTE Name="operator" />
+				<SELECTEDATTRIBUTE Name="value" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="Conjunction" Tag="N_CONJUNCTION">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="Conjunction" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="Mechanic" Parent="Hardware" Tag="N_MECHANIC" />
+		<NODE Name="Text" Parent="Specification Artifact" Tag="N_TEXT" />
+		<NODE Name="SoftwarePort" Parent="Port" Tag="N_PORT_SOFTWARE" />
+		<NODE Name="Port" Tag="N_PORT">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="conjugated" />
+				<SELECTEDATTRIBUTE Name="direction" />
+				<SELECTEDATTRIBUTE Name="dataType" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="Use Case" Parent="Development Artifact" Tag="N_USE_CASE" />
+		<NODE Name="Activity" Parent="Function" Tag="N_ACTIVITY">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="duration" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="State" Parent="Function" Tag="N_STATE" />
+		<NODE Name="Hardware" Parent="Block" Tag="N_HARDWARE">
+			<SELECTEDATTRIBUTES>
+				<SELECTEDATTRIBUTE Name="weight" />
+			</SELECTEDATTRIBUTES>
+		</NODE>
+		<NODE Name="EPK-Diagramm" Parent="Specification Artifact" Tag="N_EPK_D" />
+		<NODE Name="Specification Artifact" Parent="Development Artifact"
+			Tag="N_SPEC_ARTIFACT" />
+	</NODES>
+	<EDGES>
+		<EDGE Name="Flow" Tag="E_FLOW">
+			<MAPPINGS>
+				<MAPPING From="Solution Artifact" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Control Flow" Parent="Flow" Tag="E_FLOW_CONTROL">
+			<MAPPINGS>
+				<MAPPING From="Function" To="Function" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Verifies" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_VERIFIES">
+			<MAPPINGS>
+				<MAPPING From="Test Case" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Realizes" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REALIZES" />
+		<EDGE Name="Describes" Parent="Referential Relation"
+			Tag="E_RELATIONSHIP_REFERENTIAL_DESCRIBES" />
+		<EDGE Name="Accounts For" Parent="Attributional Relation"
+			Tag="E_RELATIONSHIP_ATTRIBUTIONAL_ACCOUNTS_FOR" />
+		<EDGE Name="Requires" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REQUIRES" />
+		<EDGE Name="fulfills" Tag="E_FULFILS">
+			<MAPPINGS>
+				<MAPPING From="Block" To="Functionality" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Uses" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_USES" />
+		<EDGE Name="Leads To" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_LEADS_TO">
+			<MAPPINGS>
+				<MAPPING From="Test Case" To="Event" />
+				<MAPPING From="Event" To="Event" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Defines" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_DEFINES">
+			<MAPPINGS>
+				<MAPPING From="Specification Artifact" To="Requirement" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="isMandatoryFor" Tag="E_IS_MANDATORY_FOR">
+			<MAPPINGS>
+				<MAPPING From="Port" To="Functionality" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Contains" Parent="Inclusion Relation" Tag="E_RELATIONSHIP_INCLUSION_CONTAINS">
+			<MAPPINGS>
+				<MAPPING From="Specification Artifact" To="Node" />
+				<MAPPING From="Module" To="Port" />
+				<MAPPING From="Mechanic" To="MechanicPort" />
+				<MAPPING From="Electronic" To="Port" />
+				<MAPPING From="Software" To="SoftwarePort" />
+				<MAPPING From="Block" To="Block" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Creates" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_CREATES">
+			<MAPPINGS>
+				<MAPPING From="Author" To="Requirement" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Inclusion Relation" Parent="Relationship" Tag="E_RELATIONSHIP_INCLUSION" />
+		<EDGE Name="Material Flow" Parent="Flow" Tag="E_FLOW_MATERIAL">
+			<MAPPINGS>
+				<MAPPING From="Solution Artifact" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Includes" Parent="Inclusion Relation" Tag="E_RELATIONSHIP_INCLUSION_INCLUDES" />
+		<EDGE Name="Satisfies" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_SATISFIES">
+			<MAPPINGS>
+				<MAPPING From="Solution Artifact" To="Requirement" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Requests" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_REQUESTS">
+			<MAPPINGS>
+				<MAPPING From="Principal" To="Requirement" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Generalizes" Parent="Inclusion Relation"
+			Tag="E_RELATIONSHIP_INCLUSION_GENERALIZES" />
+		<EDGE Name="Overlaps" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_OVERLAPS" />
+		<EDGE Name="Extends" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_EXTENDS" />
+		<EDGE Name="Precondition" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_PRECONDITION" />
+		<EDGE Name="isConnectedTo" Tag="E_IS_CONNECTED_TO">
+			<MAPPINGS>
+				<MAPPING From="ElectronicPort" To="ElectronicPort" />
+				<MAPPING From="MechanicPort" To="MechanicPort" />
+				<MAPPING From="SoftwarePort" To="SoftwarePort" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Trace" Parent="Referential Relation" Tag="E_RELATIONSHIP_REFERENTIAL_TRACE" />
+		<EDGE Name="Chronological Relation" Parent="Relationship"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL" />
+		<EDGE Name="equals" Tag="E_EQUALS">
+			<MAPPINGS>
+				<MAPPING From="Node" To="Node" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Causal Relation" Parent="Relationship" Tag="E_RELATIONSHIP_CAUSAL" />
+		<EDGE Name="Based On" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_BASED_ON">
+			<MAPPINGS>
+				<MAPPING From="Requirement" To="Requirement" />
+				<MAPPING From="Test Case" To="Requirement" />
+				<MAPPING From="Requirement" To="Change Event" />
+				<MAPPING From="Solution Artifact" To="Change Event" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Evolves To" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_EVOLVES_TO">
+			<MAPPINGS>
+				<MAPPING From="Requirement" To="Requirement" />
+				<MAPPING From="Solution Artifact" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Replaces" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_REPLACES" />
+		<EDGE Name="Logical Relation" Parent="Relationship" Tag="E_RELATIONSHIP_LOGICAL" />
+		<EDGE Name="Attributional Relation" Parent="Relationship"
+			Tag="E_RELATIONSHIP_ATTRIBUTIONAL" />
+		<EDGE Name="Implements" Parent="Causal Relation" Tag="E_RELATIONSHIP_CAUSAL_IMPLEMENTS" />
+		<EDGE Name="Referential Relation" Parent="Relationship"
+			Tag="E_RELATIONSHIP_REFERENTIAL">
+			<MAPPINGS>
+				<MAPPING From="Event" To="Event" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Information Flow" Parent="Flow" Tag="E_FLOW_INFORMATION">
+			<MAPPINGS>
+				<MAPPING From="Solution Artifact" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Avoids" Parent="Attributional Relation" Tag="E_RELATIONSHIP_ATTRIBUTIONAL_AVOIDS" />
+		<EDGE Name="Is Alternative" Parent="Logical Relation"
+			Tag="E_RELATIONSHIP_LOGICAL_IS_ALTERNATIVE" />
+		<EDGE Name="Relationship" Tag="E_RELATIONSHIP">
+			<MAPPINGS>
+				<MAPPING From="Requirement" To="Requirement" />
+				<MAPPING From="Function" To="Node" />
+				<MAPPING From="Node" To="Function" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Refines" Parent="Chronological Relation"
+			Tag="E_RELATIONSHIP_CHRONOLOGICAL_REFINES" />
+		<EDGE Name="Performs" Parent="Attributional Relation"
+			Tag="E_RELATIONSHIP_ATTRIBUTIONAL_PERFORMS">
+			<MAPPINGS>
+				<MAPPING From="Node" To="Node" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Value Flow" Parent="Flow" Tag="E_FLOW_VALUE" />
+		<EDGE Name="Energy Flow" Parent="Flow" Tag="E_FLOW_ENERGY">
+			<MAPPINGS>
+				<MAPPING From="Solution Artifact" To="Solution Artifact" />
+			</MAPPINGS>
+		</EDGE>
+		<EDGE Name="Conflicts" Parent="Logical Relation" Tag="E_RELATIONSHIP_LOGICAL_CONFLICTS" />
+	</EDGES>
+	<ATTRIBUTES>
+		<ATTRIBUTE Name="weight" Tag="A_HARDWARE_WEIGHT">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="BigDecimal" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Weight" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="b" Tag="b">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="BigInteger" />
+			<VISIBLE Value="false" />
+			<CATEGORY Value="Time" />
+			<UNIT Value="Kelvin" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="test" Tag="test2">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="BigDecimal" />
+			<VISIBLE Value="false" />
+			<CATEGORY Value="Density" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="status" Tag="A_TEST_CASE_STATUS">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="Abstraction Level" Tag="A_REQUIREMENT_ABS_LEVEL">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="direction" Tag="A_DIRECTION">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Time" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="Conjunction" Tag="A_CONJUNCTION">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="type" Tag="A_REQUIREMENT_TYPE">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="cost" Tag="A_BLOCK_COST">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="BigDecimal" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Monetary" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="operator" Tag="A_TEST_CASE_CONDITION_OP">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="conjugated" Tag="A_CONJUGATED">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="Boolean" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Time" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="dataType" Tag="A_DATA_TYPE">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Time" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="duration" Tag="A_DURATION">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="BigInteger" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="Time" />
+			<UNIT Value="Second" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="priority" Tag="A_REQUIREMENT_PRIORITY">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="value" Tag="A_TEST_CASE_CONDITION_VALUE">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+		<ATTRIBUTE Name="verified attribute" Tag="A_TEST_CASE_CONDITION_ATTRIBUTE">
+			<GROUP Value="defaultGroup" />
+			<DATATYPE Value="String" />
+			<VISIBLE Value="true" />
+			<CATEGORY Value="MetaData" />
+			<UNIT Value="none" />
+		</ATTRIBUTE>
+	</ATTRIBUTES>
+</COMPONENTS>

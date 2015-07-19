@@ -1,0 +1,47 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/pssif/epc#> .
+@prefix graph:  <http://localhost:3030/ds/PSSIF#> .
+@prefix graphattr:  <http://localhost:3030/ds/PSSIF/Attr#> .
+@prefix graphannot:  <http://localhost:3030/ds/PSSIF/Annot#> .
+
+[Graph_Node:
+		(?s graphattr:globalId ?g)
+		(?g graphattr:VALUE ?globalid)
+		(?s graphattr:name ?n)
+		(?n graphattr:VALUE ?name) 
+		(?s graph:Type ?t) 
+		
+		uriConcat('http://www.sfb768.tum.de/ont/pssif#', ?globalid,?su)
+		uriConcat('http://www.sfb768.tum.de/voc/pssif/ns#', ?t, ?type)
+		->
+		(?su rdf:type ?type)
+		(?su pssif:name ?name )
+		(?su pssif:GlobalID ?globalid)
+]
+
+ 
+[Graph_Edge:
+	(?s	graph:Type ?t)
+	(?s graph:in ?in)
+	(?s graph:out ?out)
+	(?out graphattr:globalId ?g1)
+	(?in graphattr:globalId ?g2)
+	(?g1 graphattr:VALUE ?gid1)
+	(?g2 graphattr:VALUE ?gid2)
+	makeSkolem(?su, ?gid1,?gid2)
+	uriConcat('http://www.sfb768.tum.de/voc/pssif/ns#', ?t, ?t1)
+	uriConcat('http://www.sfb768.tum.de/ont/sample_epc#', ?gid1, ?s1)
+	uriConcat('http://www.sfb768.tum.de/ont/sample_epc#', ?gid2, ?s2)
+	-> 
+	(?su rdf:Type ?t1)
+	(?su pssif:Source ?s1)
+	(?su pssif:Target ?s2)
+]
+		
+
+
+[
+		(?s graphannot:PSSIF_aliased_key 'Organizational unit')
+		->
+		(?s	rdf:Type pssif:Actor)
+]

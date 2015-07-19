@@ -1,10 +1,10 @@
 package reqtool.controller.wizard;
 
+import model.ModelBuilder;
 import de.tum.pssif.core.common.PSSIFConstants;
 import de.tum.pssif.core.common.PSSIFOption;
 import de.tum.pssif.core.common.PSSIFValue;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;
-import model.ModelBuilder;
 import reqtool.graph.RequirementFromSpecPopup;
 import graph.model.MyEdgeType;
 import graph.model.MyNode;

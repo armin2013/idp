@@ -1,0 +1,53 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/epc#> .
+@prefix graph:  <http://www.sfb768.tum.de/voc/graph#> .
+@prefix graphattr:  <http://www.sfb768.tum.de/voc/graph/Attr#> .
+@prefix graphannot:  <http://www.sfb768.tum.de/voc/graph/Annot#> .
+
+
+
+
+[EPC_Performs:
+		(?in epc:flow ?out) 
+		(?in rdf:type epc:Organizational_Unit)
+		makeSkolem(?s, ?in, ?out)
+		->
+		(?s	rdf:type pssif:Performs)
+		(?s pssif:Source ?in)
+		(?s pssif:Target ?out)
+]
+
+[EPC_ControlFlow: 	
+					(?s epc:flow ?t)
+					noValue(?s rdf:type epc:Organizational_Unit)
+					makeSkolem(?c, ?s, ?t)
+					->
+					(?c rdf:type pssif:ControlFlow )
+					(?c	pssif:Source ?s )
+					(?c	pssif:Target ?t )
+]
+
+[EPC_Organization:
+		(?s rdf:type epc:Organizational_Unit)
+		->
+		(?s	rdf:type pssif:Actor)
+		(?s pssif:PSSIF_aliased_key "Organizational unit")
+]
+
+[EPC_Function: 	
+				(?s rdf:type epc:Function)
+				->
+				(?s rdf:type pssif:Activity )
+]
+		
+[EPC_Event: 
+			(?s rdf:type epc:Event)
+			->
+			(?s rdf:type pssif:State )
+]
+
+[EPC_Name:			
+			(?s epc:name ?n ) 
+			->
+			(?s	pssif:Name ?n )
+]

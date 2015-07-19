@@ -11,6 +11,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Luc
  *
  */
+@SuppressWarnings("serial")
 public class CheckNode extends DefaultMutableTreeNode {
 
 	  public final static int SINGLE_SELECTION = 0;
@@ -19,7 +20,7 @@ public class CheckNode extends DefaultMutableTreeNode {
 
 	  protected int selectionMode;
 
-	  protected boolean isSelected;
+	  public boolean isSelected;
 
 	  public CheckNode() {
 	    this(null);
@@ -48,7 +49,8 @@ public class CheckNode extends DefaultMutableTreeNode {
 	    this.isSelected = isSelected;
 
 	    if ((selectionMode == DIG_IN_SELECTION) && (children != null)) {
-	      Enumeration e = children.elements();
+	      @SuppressWarnings("rawtypes")
+		Enumeration e = children.elements();
 	      while (e.hasMoreElements()) {
 	        CheckNode node = (CheckNode) e.nextElement();
 	        node.setSelected(isSelected);

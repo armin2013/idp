@@ -57,12 +57,12 @@ public class ConfigWriterReader {
 	/**
 	 * Creates a new ConfigWriterReader class
 	 */
-	public ConfigWriterReader()
-	{
-		CONFIG_FILE = new File("config.xml");
-		
+	public ConfigWriterReader() {
+		String configPath = System.getProperty("user.home") + "/config.xml";
+		CONFIG_FILE = new File(configPath);
+		//CONFIG_FILE = new File(ViewManager.class.getClassLoader().getResource("config.xml").getFile());
 		addStandartColors();
-	}
+}
 	
 	/**
 	 * Writes a MyNodeType color configuration to the XML file
@@ -800,5 +800,9 @@ public class ConfigWriterReader {
 				updateColors(colormapping);
 			}
 		}
+	}
+
+	public static File getCONFIG_FILE() {
+		return CONFIG_FILE;
 	}
 }

@@ -1,0 +1,43 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/pssif/epc#> .
+
+[EPC_Performs:
+		(?s	rdf:Type pssif:performs)
+		(?s pssif:Source ?in)
+		(?s pssif:Target ?out)
+		(?in pssif:Name ?n)
+		->
+		(?in rdf:type epc:Organizational_Unit)
+		(?in epc:name ?n)
+		(?in epc:performs ?out) 
+]
+
+
+[EPC_Function: 	
+		(?s rdf:type pssif:Activity )
+		(?s	pssif:Name ?n )
+		(?s	pssif:GlobalID ?gid )
+		->
+		(?s rdf:type epc:Function)
+		(?s pssif:GlobalID  ?gid) 
+		(?s epc:name ?n ) 
+]
+
+		
+[EPC_Event:
+		(?s rdf:type pssif:State )
+		(?s	pssif:Name ?n )
+		(?s	pssif:GlobalID ?gid )
+		->
+		(?s rdf:type epc:Event)
+		(?s pssif:GlobalID  ?gid) 
+		(?s epc:name ?n ) 
+]
+		
+[EPC_ControlFlow: 	
+				(?c rdf:type pssif:ControlFlow )
+				(?c	pssif:Source ?a )
+				(?c	pssif:Target ?b )
+				->
+				(?a epc:flow ?b)
+]

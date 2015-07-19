@@ -1,9 +1,6 @@
 package org.pssif.mainProcesses;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.pssif.consistencyDataStructures.Token;
@@ -15,9 +12,7 @@ import de.tum.pssif.core.exception.PSSIFIllegalAccessException;
 import de.tum.pssif.core.metamodel.Attribute;
 import de.tum.pssif.core.metamodel.AttributeGroup;
 import de.tum.pssif.core.metamodel.EdgeType;
-import de.tum.pssif.core.metamodel.NodeType;
 import de.tum.pssif.core.metamodel.NodeTypeBase;
-import de.tum.pssif.core.metamodel.PrimitiveDataType;
 import de.tum.pssif.core.model.Edge;
 import de.tum.pssif.core.model.Node;
 
@@ -91,6 +86,53 @@ public class Methods {
 				throw new PSSIFIllegalAccessException(
 						"The GLOBAL_ID Attribute couln't be found for the given nodetype: "
 								+ nodeTypeBase.getName()
+								+ " Maybe the attribute groups were changed!");
+			}
+		}
+
+	}
+
+	/**
+	 * This method returns to a given edge & according edgetype his global ID of
+	 * the model
+	 * 
+	 * @param tempEdgeOrigin
+	 *            the edge from the original model
+	 * @param edgeType
+	 *            the type of the edge
+	 * @return a string consisting of the global unique ID of a edge from the
+	 *         model
+	 */
+	public static String findGlobalID(Edge tempEdgeOrigin, EdgeType edgeType) {
+		String globalID = "Global-ID not available";
+
+		if (tempEdgeOrigin == null) {
+			throw new NullPointerException(
+					"The edge of type: "
+							+ edgeType.getName()
+							+ " which GLOBAL_ID should be retrieved is null. "
+							+ "Maybe the node wasn't transferred correctly to the new model.");
+		} else {
+			if (edgeType.getAttribute(
+					PSSIFConstants.BUILTIN_ATTRIBUTE_GLOBAL_ID).isOne()) {
+				Attribute globalIDAttribute = edgeType.getAttribute(
+						PSSIFConstants.BUILTIN_ATTRIBUTE_GLOBAL_ID).getOne();
+
+				if (globalIDAttribute.get(tempEdgeOrigin).isOne()) {
+					globalID = globalIDAttribute.get(tempEdgeOrigin).getOne()
+							.asString();
+				} else {
+					throw new PSSIFIllegalAccessException(
+							"The GLOBAL_ID Attribute couln't be found for the given edge: "
+									+ findName(edgeType, tempEdgeOrigin)
+									+ " Maybe the global id assignment was changed!");
+				}
+
+				return globalID;
+			} else {
+				throw new PSSIFIllegalAccessException(
+						"The GLOBAL_ID Attribute couln't be found for the given edgetype: "
+								+ edgeType.getName()
 								+ " Maybe the attribute groups were changed!");
 			}
 		}
@@ -198,4 +240,33 @@ public class Methods {
 		return name;
 	}
 
+	/**
+	 * Get the name from the Edge object
+	 * 
+	 * @return the actual name or "Name not available" if the name was not
+	 *         defined
+	 */
+	public static String findName(EdgeType edgeType, Edge actEdge) {
+		String name = "Name not available";
+		// find the name of the Edge
+		PSSIFOption<Attribute> tmp = edgeType
+				.getAttribute(PSSIFConstants.BUILTIN_ATTRIBUTE_NAME);
+		if (tmp.isOne()) {
+			Attribute edgeName = tmp.getOne();
+
+			if (edgeName.get(actEdge) != null) {
+				PSSIFValue value = null;
+				if (edgeName.get(actEdge).isOne()) {
+					value = edgeName.get(actEdge).getOne();
+					name = value.asString();
+				}
+				if (edgeName.get(actEdge).isNone()) {
+					name = "Name not available";
+				}
+			} else
+				name = "Name not available";
+		}
+
+		return name;
+	}
 }

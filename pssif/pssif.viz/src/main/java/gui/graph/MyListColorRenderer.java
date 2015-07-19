@@ -18,7 +18,7 @@ public class MyListColorRenderer extends DefaultListCellRenderer
 		private static final long serialVersionUID = 1L;
 		private HashMap<MyNodeType, Color> colorMapper;
 
-	    public Component getListCellRendererComponent( JList list,  
+	    public Component getListCellRendererComponent( @SuppressWarnings("rawtypes") JList list,  
 	    		Object value, int index, boolean isSelected,  
 	            boolean cellHasFocus )  
 	    {  

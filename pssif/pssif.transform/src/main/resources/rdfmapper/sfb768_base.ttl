@@ -1,0 +1,63 @@
+@prefix : 		<http://www.sfb768.tum.de/voc/base/ns#> .
+@prefix owl: 	<http://www.w3.org/2002/07/owl#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: 	<http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: 	<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+
+#---------------------------------------------------------------------------------------------------#
+# Base vocabulary properties.																		#
+#---------------------------------------------------------------------------------------------------#
+
+# Semantic relations between Entities or Relations. #################################################
+
+:differentFrom 	rdf:type 	rdf:Property 	.	# Semantic difference between two Entities or Relations.
+:equivalentTo 	rdf:type 	rdf:Property 	. 	# Semantic equivalence between two Entities or Relations.
+:refines 		rdf:type 	rdf:Property 	.	# Semantic refinement between two Entities or Relations.
+:specializes 	rdf:type 	rdf:Property 	. 	# Semantic specialization between two Entities or Relations.
+
+# Model relations between Entities or Relations. ####################################################
+
+:contains 		rdf:type 	rdf:Property 	.	# Containment relationship between two Entities and/or Relations.
+:name			rdf:type 	rdf:Property 	.	# Entity's or Relation's name.
+:type			rdf:type 	rdf:Property 	.	# Property's type.
+:id				rdf:type	rdf:Property	.	# Entity or Relations's id
+:value			rdf:type 	rdf:Property 	.	# Prediction's or Constraint's value.
+:constrainedBy	rdf:type 	rdf:Property 	; 	# ConstrainedBy relation between a Property and a Constraint.
+				rdfs:domain	:Property	 	;
+				rdfs:range	:Constraint	 	.
+:predictedBy	rdf:type 	rdf:Property 	;  	# PredictedBy relation between a Property and a Prediction.
+				rdfs:domain	:Property	 	;
+				rdfs:range	:Prediction	 	.
+:source			rdf:type 	rdf:Property 	;  	# Connection's source.
+				rdfs:domain	:Connection	 	;
+				rdfs:range	:Entity		 	.
+:target			rdf:type 	rdf:Property 	;  	# Connection's target.
+				rdfs:domain	:Connection	 	;
+				rdfs:range	:Entity		 	.
+
+#---------------------------------------------------------------------------------------------------#
+# Base vocabulary classes.																			#
+#---------------------------------------------------------------------------------------------------#
+:Entity							rdf:type 		rdfs:Class 	.	# Entity. Can be either an Interface or an Element.
+:Interface						rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf :Entity    	.
+:Element						rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf :Entity 	.
+:Relation						rdf:type 		rdfs:Class 	.	# Relation. Can be either a Property or a Connection.
+:Property						rdf:type	 	rdfs:Class 	;
+								rdfs:subClassOf	:Relation 	.
+:Connection						rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf	:Relation 	.
+:Prediction						rdf:type 		rdfs:Class 	.	# Prediction. Predicts a Property's value.
+:Constraint						rdf:type		rdfs:Class 	.	# Constraint. Constrains a Property's value.
+:EqualsConstraint 				rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf	:Constraint .
+:LowerThanConstraint 			rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf :Constraint .
+:LowerThanOrEqualsConstraint 	rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf :Constraint .
+:GreaterThanConstraint 			rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf	:Constraint .
+:GreaterThanOrEqualsConstraint 	rdf:type 		rdfs:Class 	;
+								rdfs:subClassOf	:Constraint .

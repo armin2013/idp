@@ -1,4 +1,6 @@
 package graph.listener;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -23,18 +25,22 @@ import reqtool.event.menu.CreateReqMenuEvent;
 import edu.uci.ics.jung.algorithms.layout.GraphElementAccessor;
 import edu.uci.ics.jung.visualization.VisualizationViewer;
 import edu.uci.ics.jung.visualization.control.AbstractPopupGraphMousePlugin;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse.Mode;
+import graph.model.IMyNode;
 import graph.model.MyEdge;
 import graph.model.MyNode;
 import graph.model.MyNodeType;
 import gui.graph.GraphVisualization;
+
 /**
  * Creates the right click popups
  * @author Luc
  *
  */
 public class MyPopupGraphMousePlugin extends AbstractPopupGraphMousePlugin {
-
+	
 	private GraphVisualization gViz;
+	private MyNode sourceNode = null;
 
     public MyPopupGraphMousePlugin(GraphVisualization gViz) {
         this(MouseEvent.BUTTON3_MASK);
@@ -44,14 +50,46 @@ public class MyPopupGraphMousePlugin extends AbstractPopupGraphMousePlugin {
         super(modifiers);
     }
     
-    /**
+    
+    public void mousePressed(MouseEvent e) {
+    	
+    	if(e.isPopupTrigger()) {
+            handlePopup(e);
+            e.consume();
+        }
+    	
+    	if(e.getButton() == MouseEvent.BUTTON1 && this.gViz.getAbstractModalGraphMode() == Mode.EDITING)
+    		sourceNode = getClickedNode(e);
+    }
+    
+    
+    
+    public void mouseReleased(MouseEvent e) {
+    	if(e.isPopupTrigger()) {
+            handlePopup(e);
+            e.consume();
+        }
+    	
+    	if(e.getButton() == MouseEvent.BUTTON1 && this.gViz.getAbstractModalGraphMode() == Mode.EDITING)
+    	{
+    		MyNode destn = getClickedNode(e);
+    		if (destn != null && sourceNode != null)
+    		{
+    			CreateEdgePopup popup = new CreateEdgePopup(sourceNode, destn, gViz);
+    			sourceNode = null;
+    			popup.showPopup();
+    			gViz.setAbstractModalGraphMode(Mode.PICKING);
+    		}
+    	}
+    }
+    
+	/**
      * if the user clicked somewhere on the graph canvas. What should be done
      */
     protected void handlePopup(MouseEvent e) {
-        VisualizationViewer<MyNode,MyEdge> vv = (VisualizationViewer<MyNode,MyEdge>)e.getSource();
-    	
+        @SuppressWarnings("unchecked")
+		VisualizationViewer<MyNode,MyEdge> vv = (VisualizationViewer<MyNode,MyEdge>)e.getSource();
         Point2D p = e.getPoint();
-
         GraphElementAccessor<MyNode,MyEdge> pickSupport = vv.getPickSupport();
         if(pickSupport != null) {
             MyNode node = pickSupport.getVertex(vv.getGraphLayout(), p.getX(), p.getY());
@@ -65,6 +103,7 @@ public class MyPopupGraphMousePlugin extends AbstractPopupGraphMousePlugin {
 				JMenuItem submenuRemove = removeNode(e, node);
 				popup.add(submenu);
 				popup.add(submenuRemove);
+
 				// if the user made a right click on a Reqtool Node
 				ReqToolReqistry.getInstance().post(new CreateReqMenuEvent(node, popup, gViz));
 
@@ -79,51 +118,57 @@ public class MyPopupGraphMousePlugin extends AbstractPopupGraphMousePlugin {
 			}
             else {
             	// not on a node, so show the new Node popup
-            	createNode(e);
+            	createNodePopUp(e);
             }
         }
     }
     
-
-    /**
+    
+	/**
     * Create the popup which provides the user the possibility to add a Node
     * @param e The MouseEvent which triggered the action
     */
-    private void createNode( MouseEvent e )
+    @SuppressWarnings("serial")
+	private void createNodePopUp( final MouseEvent e )
     {
-        VisualizationViewer<MyNode,MyEdge> vv = (VisualizationViewer<MyNode,MyEdge>) e.getSource();
-    	
+        @SuppressWarnings("unchecked")
+		VisualizationViewer<MyNode,MyEdge> vv = (VisualizationViewer<MyNode,MyEdge>) e.getSource();
     	JPopupMenu popup = new JPopupMenu();
         popup.add(new AbstractAction("Create Node") {
-            public void actionPerformed(ActionEvent e) {
-            	
-            	JTextField NodeName = new JTextField();
-
-            	MyNodeType[] possibilities = ModelBuilder.getNodeTypes().getAllNodeTypesArray();
-            	JComboBox<MyNodeType> Nodetype = new JComboBox<MyNodeType>(possibilities);
-            	
-            	JComponent[] inputs = new JComponent[] {
-            			new JLabel("Node Name"),
-            			NodeName,
-            			new JLabel("Nodetype"),
-            			Nodetype
-            	};						
-            	
-            	JOptionPane.showMessageDialog(null, inputs, "Create new Node Dialog", JOptionPane.PLAIN_MESSAGE);
-            	
-            	// check if the user filled all the input field
-            	if (NodeName.getText()!=null && NodeName.getText().length()>0)
-            	{
-            		ModelBuilder.addNewNodeFromGUI(NodeName.getText(), (MyNodeType) Nodetype.getSelectedItem());
-            		ModelBuilder.printVisibleStuff();
-            		gViz.updateGraph();
-            	}                                       	
-            	
+            public void actionPerformed(ActionEvent e2) {
+            	createNode(e.getPoint());
             }
 
         });
         popup.show(vv, e.getX(), e.getY());
     }
+    
+    private void createNode(Point2D p)
+    {
+    	JTextField NodeName = new JTextField();
+
+    	MyNodeType[] possibilities = ModelBuilder.getNodeTypes().getAllNodeTypesArray();
+    	JComboBox<MyNodeType> Nodetype = new JComboBox<MyNodeType>(possibilities);
+    	
+    	JComponent[] inputs = new JComponent[] {
+    			new JLabel("Node Name"),
+    			NodeName,
+    			new JLabel("Nodetype"),
+    			Nodetype
+    	};						
+    	
+    	JOptionPane.showMessageDialog(null, inputs, "Create new Node Dialog", JOptionPane.PLAIN_MESSAGE);
+    	
+    	// check if the user filled all the input field
+    	if (NodeName.getText()!=null && NodeName.getText().length()>0)
+    	{
+    		IMyNode mynode = ModelBuilder.addNewNodeFromGUI(NodeName.getText(), (MyNodeType) Nodetype.getSelectedItem());
+    		ModelBuilder.printVisibleStuff();
+    		gViz.getVisualisationViewer().getGraphLayout().setLocation(mynode, p);
+    		gViz.updateGraph();
+    	}       
+    }
+  
     /**
      * provide the SubMenu options to create a new Edge
      * @param e The MouseEvent which triggered the action
@@ -224,5 +269,18 @@ public class MyPopupGraphMousePlugin extends AbstractPopupGraphMousePlugin {
 
 			popup.showPopup();			
 		}
+    }
+    
+    private MyNode getClickedNode(MouseEvent e)
+    {
+    	@SuppressWarnings("unchecked")
+		VisualizationViewer<MyNode,MyEdge> vv = (VisualizationViewer<MyNode,MyEdge>)e.getSource();
+        Point2D p = e.getPoint();
+        GraphElementAccessor<MyNode,MyEdge> pickSupport = vv.getPickSupport();
+        if(pickSupport != null) {
+            MyNode node = pickSupport.getVertex(vv.getGraphLayout(), p.getX(), p.getY());
+			return node;
+        }
+        return null;
     }
 }

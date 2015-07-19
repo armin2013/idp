@@ -2,12 +2,12 @@ package reqtool.controller;
 
 import java.util.LinkedList;
 
+import model.ModelBuilder;
 import graph.model.MyEdge;
 import graph.model.MyEdgeType;
 import graph.model.MyNode;
 import graph.model.MyNodeType;
 import gui.graph.GraphVisualization;
-import model.ModelBuilder;
 import de.tum.pssif.core.common.PSSIFConstants;
 import de.tum.pssif.core.common.PSSIFOption;
 import de.tum.pssif.core.common.PSSIFValue;

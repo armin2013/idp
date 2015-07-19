@@ -1,0 +1,1421 @@
+@prefix :      <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+_:b0    a                  owl:Restriction ;
+        owl:allValuesFrom  :Function ;
+        owl:onProperty     :target .
+
+:ElectronicPort  a        owl:Class ;
+        rdfs:label        "ElectronicPort" ;
+        rdfs:subClassOf   :Node , :Port ;
+        :tag              "N_PORT_ELECTRONIC" ;
+        owl:disjointWith  :Change_Proposal , :Functionality , :EPK-Diagramm , :Service , :Mechanic , :Decision , :Module , :Solution_Artifact , :OR , :Class_Diagramm , :Issue , :Actor , :Function , :Activity , :Block , :Author , :Requirement , :Activity_Diagramm , :Use_Case , :Specification_Artifact , :Software , :View , :Principal , :XOR , :AND , :a , :State_Diagramm , :SoftwarePort , :Development_Artifact , :Hardware , :Electronic , :ER-Diagramm , :Test_Case , :Sequence_Diagramm , :Text , :State , :MechanicPort , :Use_Case_Diagramm , :Scenario , :Event , :Change_Event , :Conjunction .
+
+:isConnectedTo  a         owl:Class ;
+        rdfs:label        "isConnectedTo" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b1 )
+                          ] ;
+        :tag              "E_IS_CONNECTED_TO" ;
+        owl:disjointWith  :Leads_To , :Based_On , :Requires , :Replaces , :Is_Alternative , :Trace , :Satisfies , :Attributional_Relation , :Conflicts , :Referential_Relation , :Value_Flow , :Includes , :Defines , :Uses , :Chronological_Relation , :Implements , :Energy_Flow , :Overlaps , :Evolves_To , :Performs , :Creates , :Refines , :Causal_Relation , :isMandatoryFor , :Verifies , :Inclusion_Relation , :Material_Flow , :Extends , :Realizes , :Describes , :Logical_Relation , :Requests , :Precondition , :Accounts_For , :fulfills , :equals , :Flow , :Generalizes , :Avoids , :Control_Flow , :Information_Flow , :Contains , :Relationship .
+
+_:b2    a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b3    a                  owl:Restriction ;
+        owl:allValuesFrom  :Test_Case ;
+        owl:onProperty     :source .
+
+_:b4    a                  owl:Restriction ;
+        owl:allValuesFrom  :duration ;
+        owl:onProperty     :attribute .
+
+_:b5    a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:Requirement  a           owl:Class ;
+        rdfs:label        "Requirement" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b6 _:b7 _:b8 )
+                          ] ;
+        :tag              "N_REQUIREMENT" ;
+        owl:disjointWith  :Solution_Artifact , :Sequence_Diagramm , :Electronic , :Module , :ER-Diagramm , :State , :SoftwarePort , :Principal , :MechanicPort , :Class_Diagramm , :Port , :Conjunction , :XOR , :Test_Case , :a , :View , :Activity , :Service , :Hardware , :OR , :Specification_Artifact , :Author , :AND , :EPK-Diagramm , :Use_Case_Diagramm , :Change_Proposal , :State_Diagramm , :Use_Case , :Function , :Event , :Block , :Actor , :Text , :Change_Event , :Mechanic , :Scenario , :Decision , :Activity_Diagramm , :Software , :Functionality , :Issue , :ElectronicPort .
+
+:Verifies  a              owl:Class ;
+        rdfs:label        "Verifies" ;
+        rdfs:subClassOf   :Edge , :Logical_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b9 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_LOGICAL_VERIFIES" ;
+        owl:disjointWith  :Refines , :Avoids , :Material_Flow , :Energy_Flow , :Inclusion_Relation , :fulfills , :Realizes , :Chronological_Relation , :Based_On , :Creates , :Implements , :Includes , :Evolves_To , :Replaces , :Satisfies , :Control_Flow , :Contains , :Value_Flow , :Leads_To , :Overlaps , :Flow , :Requires , :Defines , :Uses , :Attributional_Relation , :Accounts_For , :Generalizes , :Referential_Relation , :Causal_Relation , :Requests , :Performs , :Information_Flow , :Describes , :Conflicts , :isConnectedTo , :equals , :Is_Alternative , :isMandatoryFor , :Precondition , :Trace , :Extends .
+
+_:b10   a                  owl:Restriction ;
+        owl:allValuesFrom  :Functionality ;
+        owl:onProperty     :target .
+
+:Material_Flow  a         owl:Class ;
+        rdfs:label        "Material Flow" ;
+        rdfs:subClassOf   :Edge , :Flow ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b11 )
+                          ] ;
+        :tag              "E_FLOW_MATERIAL" ;
+        owl:disjointWith  :Satisfies , :Trace , :Chronological_Relation , :Extends , :Control_Flow , :Referential_Relation , :Describes , :Accounts_For , :Attributional_Relation , :Implements , :Includes , :Uses , :Performs , :Value_Flow , :Contains , :Realizes , :Energy_Flow , :Replaces , :Requests , :Evolves_To , :Generalizes , :Causal_Relation , :Verifies , :fulfills , :Creates , :Conflicts , :isMandatoryFor , :Information_Flow , :Relationship , :equals , :isConnectedTo , :Inclusion_Relation , :Based_On , :Avoids , :Logical_Relation , :Overlaps , :Is_Alternative , :Requires , :Leads_To , :Defines , :Precondition , :Refines .
+
+:Service  a               owl:Class ;
+        rdfs:label        "Service" ;
+        rdfs:subClassOf   :Block , :Node ;
+        :tag              "N_SERVICE" ;
+        owl:disjointWith  :Issue , :Class_Diagramm , :ER-Diagramm , :Requirement , :ElectronicPort , :Change_Proposal , :Development_Artifact , :Sequence_Diagramm , :Test_Case , :State , :Conjunction , :Hardware , :Use_Case_Diagramm , :Software , :Activity_Diagramm , :Actor , :Specification_Artifact , :Activity , :SoftwarePort , :Author , :Scenario , :Change_Event , :State_Diagramm , :Decision , :Functionality , :View , :Event , :Principal , :XOR , :a , :AND , :Electronic , :Mechanic , :MechanicPort , :OR , :Module , :Port , :EPK-Diagramm , :Use_Case , :Text , :Function .
+
+_:b12   a                   owl:Class ;
+        owl:intersectionOf  ( _:b13 _:b14 ) .
+
+_:b15   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+_:b16   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Module  a                owl:Class ;
+        rdfs:label        "Module" ;
+        rdfs:subClassOf   :Node , :Block ;
+        :tag              "N_MODULE" ;
+        owl:disjointWith  :ER-Diagramm , :Activity_Diagramm , :ElectronicPort , :EPK-Diagramm , :Issue , :Sequence_Diagramm , :Development_Artifact , :State_Diagramm , :AND , :Principal , :Change_Proposal , :Use_Case_Diagramm , :Requirement , :a , :SoftwarePort , :Decision , :Test_Case , :State , :MechanicPort , :Text , :Function , :Hardware , :Port , :OR , :Specification_Artifact , :Conjunction , :Functionality , :Event , :Service , :Actor , :Change_Event , :Electronic , :XOR , :Author , :Class_Diagramm , :Mechanic , :Activity , :View , :Scenario , :Software , :Use_Case .
+
+:Use_Case  a              owl:Class ;
+        rdfs:label        "Use Case" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        :tag              "N_USE_CASE" ;
+        owl:disjointWith  :OR , :State_Diagramm , :Test_Case , :State , :Change_Event , :MechanicPort , :Port , :Text , :Use_Case_Diagramm , :Functionality , :XOR , :Electronic , :Module , :Service , :SoftwarePort , :Software , :View , :Principal , :ElectronicPort , :Specification_Artifact , :EPK-Diagramm , :Function , :Activity , :Conjunction , :Mechanic , :Scenario , :Event , :Block , :Class_Diagramm , :Sequence_Diagramm , :Change_Proposal , :Solution_Artifact , :Activity_Diagramm , :Actor , :a , :AND , :Issue , :ER-Diagramm , :Decision , :Requirement , :Hardware , :Author .
+
+:target  a      owl:ObjectProperty .
+
+_:b17   a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+:Chronological_Relation
+        a                 owl:Class ;
+        rdfs:label        "Chronological Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL" ;
+        owl:disjointWith  :isConnectedTo , :Avoids , :Value_Flow , :Requires , :Energy_Flow , :equals , :Describes , :fulfills , :isMandatoryFor , :Generalizes , :Includes , :Referential_Relation , :Accounts_For , :Contains , :Control_Flow , :Creates , :Conflicts , :Causal_Relation , :Overlaps , :Information_Flow , :Satisfies , :Logical_Relation , :Inclusion_Relation , :Flow , :Realizes , :Verifies , :Defines , :Requests , :Material_Flow , :Extends , :Implements , :Uses , :Is_Alternative , :Performs , :Attributional_Relation , :Trace .
+
+_:b18   a                   owl:Class ;
+        owl:intersectionOf  ( _:b19 _:b20 ) .
+
+:direction  a             owl:Class ;
+        rdfs:label        "direction" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b21 _:b22 _:b5 _:b23 _:b24 )
+                          ] ;
+        :tag              "A_DIRECTION" ;
+        owl:disjointWith  :a , :weight , :status , :priority , :operator , :cost , :conjugated , :duration , :test , :type , :value , :dataType , :AND , :b , :Conjunction , :verified_attribute , :OR , :Abstraction_Level , :XOR .
+
+:id     a       owl:DatatypeProperty .
+
+_:b7    a                  owl:Restriction ;
+        owl:allValuesFrom  :type ;
+        owl:onProperty     :attribute .
+
+_:b25   a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+:Requires  a              owl:Class ;
+        rdfs:label        "Requires" ;
+        rdfs:subClassOf   :Causal_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_CAUSAL_REQUIRES" ;
+        owl:disjointWith  :Evolves_To , :Generalizes , :Includes , :Contains , :Requests , :Is_Alternative , :Extends , :Attributional_Relation , :Precondition , :Value_Flow , :Performs , :Realizes , :Based_On , :Control_Flow , :Creates , :Information_Flow , :fulfills , :Overlaps , :isMandatoryFor , :Replaces , :Satisfies , :Chronological_Relation , :Refines , :Energy_Flow , :Defines , :Flow , :Trace , :Inclusion_Relation , :Leads_To , :Uses , :Implements , :Material_Flow , :Referential_Relation , :Verifies , :Logical_Relation , :Conflicts , :Accounts_For , :isConnectedTo , :equals , :Describes , :Avoids .
+
+:Is_Alternative  a        owl:Class ;
+        rdfs:label        "Is Alternative" ;
+        rdfs:subClassOf   :Logical_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_LOGICAL_IS_ALTERNATIVE" ;
+        owl:disjointWith  :Flow , :Causal_Relation , :Requests , :Leads_To , :Includes , :Conflicts , :Inclusion_Relation , :Value_Flow , :Overlaps , :Requires , :Avoids , :Energy_Flow , :Control_Flow , :Describes , :Trace , :Referential_Relation , :Material_Flow , :Based_On , :Performs , :Creates , :Realizes , :Information_Flow , :Refines , :Defines , :Generalizes , :Extends , :equals , :Replaces , :Chronological_Relation , :isMandatoryFor , :Precondition , :Satisfies , :Contains , :fulfills , :Verifies , :Evolves_To , :isConnectedTo , :Attributional_Relation , :Implements , :Accounts_For , :Uses .
+
+_:b26   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+:Accounts_For  a          owl:Class ;
+        rdfs:label        "Accounts For" ;
+        rdfs:subClassOf   :Attributional_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_ATTRIBUTIONAL_ACCOUNTS_FOR" ;
+        owl:disjointWith  :Evolves_To , :equals , :Leads_To , :Includes , :Avoids , :Defines , :Flow , :Trace , :Verifies , :Control_Flow , :Requests , :Inclusion_Relation , :Describes , :Logical_Relation , :Requires , :Chronological_Relation , :Realizes , :Value_Flow , :Extends , :Refines , :Energy_Flow , :Is_Alternative , :Contains , :Creates , :Replaces , :isMandatoryFor , :Causal_Relation , :Uses , :fulfills , :Based_On , :Information_Flow , :Performs , :Generalizes , :Conflicts , :Implements , :Satisfies , :Referential_Relation , :Precondition , :Material_Flow , :isConnectedTo , :Overlaps .
+
+:Satisfies  a             owl:Class ;
+        rdfs:label        "Satisfies" ;
+        rdfs:subClassOf   :Edge , :Logical_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b27 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_LOGICAL_SATISFIES" ;
+        owl:disjointWith  :isConnectedTo , :Attributional_Relation , :Extends , :Overlaps , :isMandatoryFor , :Causal_Relation , :Generalizes , :Flow , :Requests , :Verifies , :Material_Flow , :Information_Flow , :Defines , :Is_Alternative , :Referential_Relation , :Uses , :Performs , :Leads_To , :Creates , :Precondition , :Energy_Flow , :Chronological_Relation , :Based_On , :Realizes , :Value_Flow , :Conflicts , :Control_Flow , :Inclusion_Relation , :Refines , :fulfills , :Requires , :Implements , :Replaces , :Contains , :Evolves_To , :Avoids , :Trace , :equals , :Describes , :Accounts_For , :Includes .
+
+_:b28   a                  owl:Restriction ;
+        owl:allValuesFrom  :Node ;
+        owl:onProperty     :source .
+
+_:b29   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:Development_Artifact
+        a                 owl:Class ;
+        rdfs:label        "Development Artifact" ;
+        rdfs:subClassOf   :Node ;
+        :tag              "N_DEV_ARTIFACT" ;
+        owl:disjointWith  :Port , :Electronic , :Solution_Artifact , :Hardware , :Mechanic , :Principal , :Module , :State , :Software , :ElectronicPort , :OR , :Activity , :MechanicPort , :Service , :Actor , :SoftwarePort , :Function , :AND , :Block , :XOR , :a , :Conjunction , :Author .
+
+:Generalizes  a           owl:Class ;
+        rdfs:label        "Generalizes" ;
+        rdfs:subClassOf   :Inclusion_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_INCLUSION_GENERALIZES" ;
+        owl:disjointWith  :Requires , :Extends , :Realizes , :Energy_Flow , :Defines , :isConnectedTo , :Uses , :Flow , :Logical_Relation , :Value_Flow , :Refines , :Evolves_To , :Describes , :Overlaps , :Accounts_For , :Implements , :Precondition , :Contains , :Referential_Relation , :Creates , :Satisfies , :Includes , :Is_Alternative , :Trace , :Leads_To , :Conflicts , :fulfills , :Based_On , :Information_Flow , :Control_Flow , :Requests , :Verifies , :Material_Flow , :Replaces , :isMandatoryFor , :Chronological_Relation , :Causal_Relation , :Avoids , :Attributional_Relation , :Performs , :equals .
+
+:unit   a       owl:DatatypeProperty .
+
+:Hardware  a              owl:Class ;
+        rdfs:label        "Hardware" ;
+        rdfs:subClassOf   :Node , :Block ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b30 )
+                          ] ;
+        :tag              "N_HARDWARE" ;
+        owl:disjointWith  :State , :Test_Case , :Issue , :Use_Case , :EPK-Diagramm , :Software , :SoftwarePort , :Decision , :Change_Event , :ElectronicPort , :Conjunction , :Author , :ER-Diagramm , :State_Diagramm , :View , :Use_Case_Diagramm , :MechanicPort , :AND , :OR , :Scenario , :a , :Event , :Change_Proposal , :XOR , :Actor , :Specification_Artifact , :Activity_Diagramm , :Development_Artifact , :Port , :Class_Diagramm , :Function , :Principal , :Service , :Activity , :Text , :Requirement , :Sequence_Diagramm , :Module , :Functionality .
+
+_:b31   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:Software  a              owl:Class ;
+        rdfs:label        "Software" ;
+        rdfs:subClassOf   :Node , :Block ;
+        :tag              "N_SOFTWARE" ;
+        owl:disjointWith  :Conjunction , :Use_Case , :Class_Diagramm , :OR , :Port , :Hardware , :Issue , :State_Diagramm , :Text , :AND , :Sequence_Diagramm , :Event , :Activity , :View , :Functionality , :Service , :Function , :Test_Case , :MechanicPort , :EPK-Diagramm , :State , :ElectronicPort , :Specification_Artifact , :Actor , :XOR , :Electronic , :Change_Proposal , :Requirement , :Development_Artifact , :Scenario , :Author , :Activity_Diagramm , :Change_Event , :Use_Case_Diagramm , :SoftwarePort , :Mechanic , :ER-Diagramm , :Module , :Principal , :Decision , :a .
+
+_:b32   a               owl:Restriction ;
+        owl:hasValue    "Second" ;
+        owl:onProperty  :unit .
+
+_:b33   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b34   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+_:b35   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b36   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b37   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b38   a               owl:Restriction ;
+        owl:hasValue    "Time" ;
+        owl:onProperty  :category .
+
+:visibility  a  owl:DatatypeProperty .
+
+:Creates  a               owl:Class ;
+        rdfs:label        "Creates" ;
+        rdfs:subClassOf   :Causal_Relation , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b39 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_CAUSAL_CREATES" ;
+        owl:disjointWith  :Referential_Relation , :Information_Flow , :Chronological_Relation , :Based_On , :Implements , :Leads_To , :Trace , :fulfills , :Value_Flow , :Performs , :Includes , :Precondition , :Is_Alternative , :Uses , :Extends , :Attributional_Relation , :Realizes , :Flow , :Verifies , :Conflicts , :Logical_Relation , :equals , :Material_Flow , :Generalizes , :Evolves_To , :Requests , :isConnectedTo , :Avoids , :Accounts_For , :Control_Flow , :Satisfies , :Refines , :Requires , :Inclusion_Relation , :Defines , :Contains , :Describes , :Replaces , :Overlaps , :isMandatoryFor , :Energy_Flow .
+
+_:b40   a                   owl:Class ;
+        owl:intersectionOf  ( _:b41 _:b42 ) .
+
+_:b43   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b44   a                  owl:Restriction ;
+        owl:allValuesFrom  :verified_attribute ;
+        owl:onProperty     :attribute .
+
+_:b45   a                   owl:Class ;
+        owl:intersectionOf  ( _:b46 _:b47 ) .
+
+:Contains  a              owl:Class ;
+        rdfs:label        "Contains" ;
+        rdfs:subClassOf   :Edge , :Inclusion_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b40 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_INCLUSION_CONTAINS" ;
+        owl:disjointWith  :Uses , :equals , :Causal_Relation , :Attributional_Relation , :Refines , :Leads_To , :Energy_Flow , :Replaces , :Material_Flow , :Generalizes , :Is_Alternative , :Overlaps , :Performs , :Requires , :Referential_Relation , :Extends , :isMandatoryFor , :Flow , :Logical_Relation , :Conflicts , :Realizes , :Implements , :Avoids , :Based_On , :Trace , :Value_Flow , :Accounts_For , :Includes , :Chronological_Relation , :Verifies , :Control_Flow , :Evolves_To , :Describes , :Information_Flow , :Requests , :isConnectedTo , :Defines , :fulfills , :Precondition , :Satisfies , :Creates .
+
+_:b48   a                  owl:Restriction ;
+        owl:allValuesFrom  :Node ;
+        owl:onProperty     :target .
+
+_:b49   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:fulfills  a              owl:Class ;
+        rdfs:label        "fulfills" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b50 )
+                          ] ;
+        :tag              "E_FULFILS" ;
+        owl:disjointWith  :Realizes , :Replaces , :Precondition , :Is_Alternative , :Energy_Flow , :isConnectedTo , :Conflicts , :Referential_Relation , :Information_Flow , :Performs , :Control_Flow , :equals , :Describes , :Creates , :Uses , :Leads_To , :Overlaps , :Accounts_For , :Implements , :Verifies , :Defines , :Trace , :Value_Flow , :Includes , :Avoids , :Generalizes , :Based_On , :Causal_Relation , :Extends , :Evolves_To , :Contains , :isMandatoryFor , :Requests , :Satisfies , :Flow , :Relationship , :Logical_Relation , :Inclusion_Relation , :Attributional_Relation , :Refines , :Material_Flow , :Requires , :Chronological_Relation .
+
+_:b51   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:Referential_Relation
+        a                 owl:Class ;
+        rdfs:label        "Referential Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b52 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_REFERENTIAL" ;
+        owl:disjointWith  :Avoids , :Contains , :Creates , :Chronological_Relation , :Replaces , :Based_On , :Verifies , :Accounts_For , :Requests , :Energy_Flow , :Requires , :Flow , :Information_Flow , :Logical_Relation , :Refines , :Material_Flow , :Extends , :Satisfies , :Inclusion_Relation , :Evolves_To , :Causal_Relation , :Generalizes , :Realizes , :Precondition , :Leads_To , :isConnectedTo , :equals , :Value_Flow , :Includes , :Conflicts , :fulfills , :isMandatoryFor , :Control_Flow , :Overlaps , :Is_Alternative , :Attributional_Relation , :Implements , :Performs .
+
+_:b53   a                  owl:Restriction ;
+        owl:allValuesFrom  :Node ;
+        owl:onProperty     :source .
+
+_:b14   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+_:b22   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+_:b54   a                  owl:Restriction ;
+        owl:allValuesFrom  :Port ;
+        owl:onProperty     :source .
+
+:Node   a                 owl:Class ;
+        rdfs:label        "Node" ;
+        owl:disjointWith  :Edge .
+
+:Functionality  a         owl:Class ;
+        rdfs:label        "Functionality" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        :tag              "N_FUNCTIONALITY" ;
+        owl:disjointWith  :Class_Diagramm , :MechanicPort , :Specification_Artifact , :EPK-Diagramm , :Hardware , :Actor , :Principal , :a , :Port , :Text , :Issue , :Solution_Artifact , :Electronic , :Software , :Author , :State , :ElectronicPort , :ER-Diagramm , :Use_Case , :Requirement , :Mechanic , :Event , :Decision , :Conjunction , :Change_Event , :Scenario , :View , :Change_Proposal , :Function , :Activity_Diagramm , :State_Diagramm , :XOR , :OR , :Activity , :Block , :SoftwarePort , :Test_Case , :Use_Case_Diagramm , :AND , :Module , :Sequence_Diagramm , :Service .
+
+_:b27   a                   owl:Class ;
+        owl:intersectionOf  ( _:b55 _:b56 ) .
+
+_:b57   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b58   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+_:b6    a                  owl:Restriction ;
+        owl:allValuesFrom  :priority ;
+        owl:onProperty     :attribute .
+
+_:b59   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:Change_Proposal  a       owl:Class ;
+        rdfs:label        "Change Proposal" ;
+        rdfs:subClassOf   :Node , :Event ;
+        :tag              "N_CHANGE_PROPOSAL" ;
+        owl:disjointWith  :MechanicPort , :XOR , :Software , :AND , :Use_Case , :Block , :Activity , :Requirement , :Solution_Artifact , :ElectronicPort , :Sequence_Diagramm , :State_Diagramm , :Port , :Actor , :SoftwarePort , :EPK-Diagramm , :Author , :Scenario , :Activity_Diagramm , :Specification_Artifact , :Class_Diagramm , :Hardware , :Principal , :Function , :OR , :Module , :Use_Case_Diagramm , :ER-Diagramm , :Electronic , :Functionality , :a , :Conjunction , :State , :Issue , :Text , :Mechanic , :Decision , :Change_Event , :Service , :View , :Test_Case .
+
+_:b60   a                  owl:Restriction ;
+        owl:allValuesFrom  :Requirement ;
+        owl:onProperty     :target .
+
+_:b61   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+:equals  a                owl:Class ;
+        rdfs:label        "equals" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b62 )
+                          ] ;
+        :tag              "E_EQUALS" ;
+        owl:disjointWith  :Is_Alternative , :Overlaps , :Generalizes , :Flow , :Avoids , :Describes , :Relationship , :Uses , :Satisfies , :isMandatoryFor , :Referential_Relation , :isConnectedTo , :Evolves_To , :Verifies , :Implements , :Information_Flow , :Based_On , :Causal_Relation , :Extends , :Performs , :Logical_Relation , :Accounts_For , :Leads_To , :Chronological_Relation , :Replaces , :Precondition , :Control_Flow , :Requires , :Contains , :Conflicts , :fulfills , :Defines , :Value_Flow , :Requests , :Inclusion_Relation , :Refines , :Realizes , :Energy_Flow , :Attributional_Relation , :Trace , :Includes , :Material_Flow , :Creates .
+
+_:b63   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Leads_To  a              owl:Class ;
+        rdfs:label        "Leads To" ;
+        rdfs:subClassOf   :Chronological_Relation , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b64 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_LEADS_TO" ;
+        owl:disjointWith  :Logical_Relation , :Conflicts , :Requires , :Refines , :Replaces , :Evolves_To , :Verifies , :Overlaps , :Defines , :isMandatoryFor , :Is_Alternative , :Avoids , :Causal_Relation , :Generalizes , :Extends , :Based_On , :fulfills , :Contains , :Flow , :Information_Flow , :Accounts_For , :Uses , :Trace , :Energy_Flow , :Creates , :Attributional_Relation , :Material_Flow , :Includes , :Inclusion_Relation , :Implements , :Satisfies , :equals , :Control_Flow , :Requests , :Value_Flow , :isConnectedTo , :Describes , :Referential_Relation , :Precondition , :Realizes , :Performs .
+
+:Defines  a               owl:Class ;
+        rdfs:label        "Defines" ;
+        rdfs:subClassOf   :Referential_Relation , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b18 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_REFERENTIAL_DEFINES" ;
+        owl:disjointWith  :Material_Flow , :Describes , :Control_Flow , :Satisfies , :fulfills , :Requests , :Refines , :Realizes , :Requires , :Leads_To , :isConnectedTo , :Creates , :Inclusion_Relation , :Precondition , :Value_Flow , :Includes , :Uses , :Verifies , :isMandatoryFor , :Chronological_Relation , :Based_On , :Flow , :Conflicts , :Evolves_To , :Energy_Flow , :Accounts_For , :Trace , :Performs , :equals , :Replaces , :Information_Flow , :Implements , :Causal_Relation , :Generalizes , :Extends , :Contains , :Avoids , :Overlaps , :Is_Alternative , :Logical_Relation , :Attributional_Relation .
+
+:priority  a              owl:Class ;
+        rdfs:label        "priority" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b65 _:b66 _:b67 _:b59 _:b25 )
+                          ] ;
+        :tag              "A_REQUIREMENT_PRIORITY" ;
+        owl:disjointWith  :Abstraction_Level , :XOR , :OR , :weight , :Conjunction , :conjugated , :cost , :b , :operator , :duration , :value , :test , :dataType , :a , :AND , :direction , :verified_attribute , :type , :status .
+
+:Class_Diagramm  a        owl:Class ;
+        rdfs:label        "Class Diagramm" ;
+        rdfs:subClassOf   :Node , :Specification_Artifact ;
+        :tag              "N_CLASS_D" ;
+        owl:disjointWith  :Text , :Test_Case , :State , :Functionality , :Activity , :Block , :Electronic , :ER-Diagramm , :Requirement , :Sequence_Diagramm , :Mechanic , :ElectronicPort , :a , :Port , :Use_Case_Diagramm , :Principal , :Change_Proposal , :Conjunction , :MechanicPort , :Event , :Service , :Module , :View , :EPK-Diagramm , :Actor , :Change_Event , :SoftwarePort , :Activity_Diagramm , :Solution_Artifact , :Function , :State_Diagramm , :AND , :Software , :Hardware , :Author , :Scenario , :Decision , :XOR , :OR , :Use_Case , :Issue .
+
+_:b9    a                   owl:Class ;
+        owl:intersectionOf  ( _:b3 _:b68 ) .
+
+:weight  a                owl:Class ;
+        rdfs:label        "weight" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b69 _:b70 _:b49 _:b71 _:b72 )
+                          ] ;
+        :tag              "A_HARDWARE_WEIGHT" ;
+        owl:disjointWith  :direction , :dataType , :type , :b , :duration , :cost , :priority , :Conjunction , :test , :verified_attribute , :AND , :status , :conjugated , :Abstraction_Level , :operator , :value , :a , :OR , :XOR .
+
+_:b73   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b74   a                  owl:Restriction ;
+        owl:allValuesFrom  :Functionality ;
+        owl:onProperty     :target .
+
+_:b75   a                  owl:Restriction ;
+        owl:allValuesFrom  :Event ;
+        owl:onProperty     :target .
+
+_:b76   a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+_:b77   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+:Decision  a              owl:Class ;
+        rdfs:label        "Decision" ;
+        rdfs:subClassOf   :Event , :Node ;
+        :tag              "N_DECISION" ;
+        owl:disjointWith  :Use_Case , :Issue , :Test_Case , :Port , :SoftwarePort , :Scenario , :Functionality , :XOR , :Actor , :Requirement , :View , :Use_Case_Diagramm , :AND , :ElectronicPort , :Function , :Mechanic , :EPK-Diagramm , :Activity_Diagramm , :Activity , :Solution_Artifact , :Sequence_Diagramm , :Block , :Electronic , :MechanicPort , :Specification_Artifact , :Text , :Hardware , :State_Diagramm , :Principal , :ER-Diagramm , :Change_Proposal , :Class_Diagramm , :Change_Event , :a , :Conjunction , :OR , :Author , :Module , :Service , :Software , :State .
+
+_:b78   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:a      a                 owl:Class ;
+        rdfs:label        "a" ;
+        rdfs:subClassOf   :Conjunction ;
+        :tag              "a" ;
+        owl:disjointWith  :Hardware , :ElectronicPort , :Actor , :Sequence_Diagramm , :operator , :Electronic , :OR , :Issue , :Mechanic , :View , :Scenario , :Requirement , :ER-Diagramm , :test , :Service , :Event , :Change_Event , :State , :Software , :duration , :Use_Case_Diagramm , :Module , :conjugated , :Principal , :Activity_Diagramm , :status , :Abstraction_Level , :Decision , :Specification_Artifact , :type , :AND , :verified_attribute , :Functionality , :Use_Case , :MechanicPort , :Function , :SoftwarePort , :priority , :Change_Proposal , :value , :State_Diagramm , :EPK-Diagramm , :Author , :Activity , :dataType , :Solution_Artifact , :Port , :Class_Diagramm , :weight , :XOR , :Block , :cost , :direction , :b , :Test_Case , :Text , :Development_Artifact .
+
+_:b79   a               owl:Restriction ;
+        owl:hasValue    "Boolean" ;
+        owl:onProperty  :datatype .
+
+:ER-Diagramm  a           owl:Class ;
+        rdfs:label        "ER-Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_ER_D" ;
+        owl:disjointWith  :Decision , :Text , :Change_Proposal , :SoftwarePort , :Electronic , :Use_Case , :XOR , :Class_Diagramm , :State , :Service , :Activity_Diagramm , :Mechanic , :Sequence_Diagramm , :Requirement , :OR , :State_Diagramm , :Solution_Artifact , :Hardware , :AND , :Principal , :Issue , :ElectronicPort , :Actor , :Function , :Port , :Activity , :Test_Case , :Block , :a , :MechanicPort , :Use_Case_Diagramm , :View , :Author , :EPK-Diagramm , :Change_Event , :Conjunction , :Module , :Event , :Scenario , :Software , :Functionality .
+
+:Issue  a                 owl:Class ;
+        rdfs:label        "Issue" ;
+        rdfs:subClassOf   :Node , :Event ;
+        :tag              "N_ISSUE" ;
+        owl:disjointWith  :Use_Case_Diagramm , :a , :Mechanic , :Principal , :Block , :SoftwarePort , :Service , :Hardware , :Function , :View , :Change_Proposal , :Class_Diagramm , :Activity_Diagramm , :Sequence_Diagramm , :ER-Diagramm , :Module , :AND , :Use_Case , :MechanicPort , :Solution_Artifact , :Change_Event , :Text , :Specification_Artifact , :Functionality , :Conjunction , :Requirement , :Test_Case , :OR , :Electronic , :Activity , :XOR , :Author , :EPK-Diagramm , :Software , :Decision , :ElectronicPort , :Actor , :Scenario , :State_Diagramm , :Port , :State .
+
+:Requests  a              owl:Class ;
+        rdfs:label        "Requests" ;
+        rdfs:subClassOf   :Edge , :Causal_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b80 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_CAUSAL_REQUESTS" ;
+        owl:disjointWith  :Satisfies , :Accounts_For , :fulfills , :Energy_Flow , :Trace , :equals , :isMandatoryFor , :Precondition , :Chronological_Relation , :Attributional_Relation , :Creates , :Is_Alternative , :Flow , :Evolves_To , :Describes , :Conflicts , :Requires , :Realizes , :Generalizes , :Performs , :Material_Flow , :Verifies , :Uses , :Replaces , :Based_On , :Refines , :Value_Flow , :Information_Flow , :Referential_Relation , :Overlaps , :Implements , :Avoids , :Control_Flow , :Extends , :Logical_Relation , :Contains , :Leads_To , :Defines , :isConnectedTo , :Includes , :Inclusion_Relation .
+
+_:b1    a                   owl:Class ;
+        owl:intersectionOf  ( _:b81 _:b82 ) .
+
+:cost   a                 owl:Class ;
+        rdfs:label        "cost" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b83 _:b84 _:b85 _:b86 _:b87 )
+                          ] ;
+        :tag              "A_BLOCK_COST" ;
+        owl:disjointWith  :OR , :conjugated , :Conjunction , :direction , :b , :verified_attribute , :type , :XOR , :status , :duration , :operator , :Abstraction_Level , :a , :priority , :dataType , :AND , :weight , :test , :value .
+
+_:b88   a                  owl:Restriction ;
+        owl:allValuesFrom  :Conjunction ;
+        owl:onProperty     :attribute .
+
+_:b89   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+_:b62   a                   owl:Class ;
+        owl:intersectionOf  ( _:b28 _:b90 ) .
+
+_:b91   a                  owl:Restriction ;
+        owl:allValuesFrom  :status ;
+        owl:onProperty     :attribute .
+
+:Activity  a              owl:Class ;
+        rdfs:label        "Activity" ;
+        rdfs:subClassOf   :Function , :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b4 )
+                          ] ;
+        :tag              "N_ACTIVITY" ;
+        owl:disjointWith  :Mechanic , :Sequence_Diagramm , :Module , :Requirement , :Actor , :Issue , :OR , :Use_Case , :Block , :Event , :Class_Diagramm , :Electronic , :Decision , :State_Diagramm , :ER-Diagramm , :Test_Case , :Principal , :EPK-Diagramm , :XOR , :Specification_Artifact , :Scenario , :Software , :Functionality , :State , :Use_Case_Diagramm , :Activity_Diagramm , :ElectronicPort , :Author , :Text , :View , :Conjunction , :AND , :Port , :MechanicPort , :Service , :Hardware , :SoftwarePort , :Development_Artifact , :Change_Event , :Change_Proposal , :a .
+
+_:b92   a                  owl:Restriction ;
+        owl:allValuesFrom  :Node ;
+        owl:onProperty     :source .
+
+_:b70   a               owl:Restriction ;
+        owl:hasValue    "BigDecimal" ;
+        owl:onProperty  :datatype .
+
+:comment  a     owl:DatatypeProperty .
+
+:Specification_Artifact
+        a                 owl:Class ;
+        rdfs:label        "Specification Artifact" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        :tag              "N_SPEC_ARTIFACT" ;
+        owl:disjointWith  :Test_Case , :Change_Proposal , :Event , :Requirement , :AND , :State , :Author , :Actor , :Principal , :Electronic , :Functionality , :Hardware , :Decision , :OR , :XOR , :Port , :Service , :MechanicPort , :Issue , :Use_Case , :View , :SoftwarePort , :Change_Event , :Mechanic , :Solution_Artifact , :Module , :Activity , :Function , :Conjunction , :a , :Software , :Block , :ElectronicPort .
+
+_:b93   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b13   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+_:b21   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Sequence_Diagramm  a     owl:Class ;
+        rdfs:label        "Sequence Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_SEQ_D" ;
+        owl:disjointWith  :ER-Diagramm , :Mechanic , :Issue , :Author , :Decision , :OR , :Test_Case , :Service , :Software , :Change_Event , :MechanicPort , :Electronic , :Use_Case , :SoftwarePort , :Use_Case_Diagramm , :ElectronicPort , :Functionality , :View , :Scenario , :Hardware , :Block , :Solution_Artifact , :State , :Actor , :Text , :AND , :Event , :Port , :EPK-Diagramm , :XOR , :Module , :Function , :Class_Diagramm , :Change_Proposal , :Activity_Diagramm , :a , :Requirement , :Principal , :Conjunction , :Activity , :State_Diagramm .
+
+:Text   a                 owl:Class ;
+        rdfs:label        "Text" ;
+        rdfs:subClassOf   :Node , :Specification_Artifact ;
+        :tag              "N_TEXT" ;
+        owl:disjointWith  :Activity_Diagramm , :Change_Proposal , :ElectronicPort , :Electronic , :Sequence_Diagramm , :Solution_Artifact , :View , :Author , :Actor , :Use_Case_Diagramm , :Module , :Issue , :State_Diagramm , :a , :Change_Event , :Test_Case , :Event , :Activity , :Principal , :Service , :Mechanic , :Class_Diagramm , :Functionality , :AND , :Requirement , :MechanicPort , :Conjunction , :Software , :State , :XOR , :Function , :Port , :EPK-Diagramm , :Block , :Scenario , :ER-Diagramm , :OR , :Hardware , :Decision , :SoftwarePort , :Use_Case .
+
+_:b80   a                   owl:Class ;
+        owl:intersectionOf  ( _:b94 _:b95 ) .
+
+:Principal  a             owl:Class ;
+        rdfs:label        "Principal" ;
+        rdfs:subClassOf   :Actor , :Node ;
+        :tag              "N_PRINCIPAL" ;
+        owl:disjointWith  :Service , :View , :Electronic , :Port , :Conjunction , :AND , :ElectronicPort , :State_Diagramm , :Decision , :Function , :Development_Artifact , :Text , :SoftwarePort , :Activity , :Software , :OR , :Test_Case , :Sequence_Diagramm , :Mechanic , :Functionality , :Class_Diagramm , :Author , :MechanicPort , :Module , :Issue , :Event , :Specification_Artifact , :Scenario , :EPK-Diagramm , :Use_Case_Diagramm , :ER-Diagramm , :Use_Case , :Hardware , :a , :Change_Proposal , :Activity_Diagramm , :Requirement , :State , :Change_Event , :XOR .
+
+_:b96   a               owl:Restriction ;
+        owl:hasValue    "Density" ;
+        owl:onProperty  :category .
+
+:Implements  a            owl:Class ;
+        rdfs:label        "Implements" ;
+        rdfs:subClassOf   :Edge , :Causal_Relation ;
+        :tag              "E_RELATIONSHIP_CAUSAL_IMPLEMENTS" ;
+        owl:disjointWith  :Chronological_Relation , :isMandatoryFor , :Trace , :Performs , :Material_Flow , :Realizes , :Attributional_Relation , :Generalizes , :fulfills , :Based_On , :Logical_Relation , :Uses , :Satisfies , :Precondition , :Referential_Relation , :Includes , :Evolves_To , :Defines , :Conflicts , :Information_Flow , :Contains , :Creates , :Avoids , :Replaces , :Overlaps , :Control_Flow , :Value_Flow , :Energy_Flow , :Leads_To , :Describes , :Extends , :Accounts_For , :equals , :Requires , :Inclusion_Relation , :Flow , :Requests , :Is_Alternative , :Verifies , :Refines , :isConnectedTo .
+
+_:b97   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b98   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Test_Case  a             owl:Class ;
+        rdfs:label        "Test Case" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b91 _:b44 _:b99 _:b100 )
+                          ] ;
+        :tag              "N_TEST_CASE" ;
+        owl:disjointWith  :Port , :Software , :a , :OR , :Principal , :Decision , :ER-Diagramm , :Issue , :State , :Mechanic , :Service , :Class_Diagramm , :Author , :Function , :Use_Case_Diagramm , :Activity , :Activity_Diagramm , :ElectronicPort , :Functionality , :Change_Proposal , :Text , :State_Diagramm , :Block , :Hardware , :Electronic , :Scenario , :Requirement , :MechanicPort , :SoftwarePort , :Sequence_Diagramm , :Actor , :Change_Event , :Solution_Artifact , :View , :Conjunction , :XOR , :EPK-Diagramm , :Module , :AND , :Specification_Artifact , :Event , :Use_Case .
+
+:verified_attribute  a    owl:Class ;
+        rdfs:label        "verified attribute" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b101 _:b89 _:b43 _:b102 _:b103 )
+                          ] ;
+        :tag              "A_TEST_CASE_CONDITION_ATTRIBUTE" ;
+        owl:disjointWith  :priority , :operator , :b , :duration , :a , :dataType , :Conjunction , :test , :type , :XOR , :direction , :cost , :weight , :Abstraction_Level , :conjugated , :value , :AND , :OR , :status .
+
+_:b67   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:Activity_Diagramm  a     owl:Class ;
+        rdfs:label        "Activity Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_ACTIVITY_D" ;
+        owl:disjointWith  :Class_Diagramm , :XOR , :Software , :EPK-Diagramm , :SoftwarePort , :Service , :View , :Change_Event , :Scenario , :Module , :a , :Solution_Artifact , :Conjunction , :Test_Case , :MechanicPort , :Function , :Actor , :Block , :Functionality , :State_Diagramm , :Use_Case , :Port , :Principal , :Sequence_Diagramm , :Decision , :ElectronicPort , :Use_Case_Diagramm , :ER-Diagramm , :Text , :Mechanic , :Author , :Change_Proposal , :Event , :Hardware , :Issue , :Requirement , :Activity , :State , :OR , :AND , :Electronic .
+
+_:b104  a                  owl:Restriction ;
+        owl:allValuesFrom  :Author ;
+        owl:onProperty     :source .
+
+_:b105  a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+:Solution_Artifact  a     owl:Class ;
+        rdfs:label        "Solution Artifact" ;
+        rdfs:subClassOf   :Node ;
+        :tag              "N_SOL_ARTIFACT" ;
+        owl:disjointWith  :Activity_Diagramm , :Change_Event , :EPK-Diagramm , :a , :Use_Case_Diagramm , :Issue , :Conjunction , :Class_Diagramm , :Requirement , :Port , :View , :AND , :ER-Diagramm , :Decision , :XOR , :Change_Proposal , :Text , :Development_Artifact , :State_Diagramm , :Scenario , :ElectronicPort , :Test_Case , :OR , :Specification_Artifact , :SoftwarePort , :Event , :Functionality , :Sequence_Diagramm , :MechanicPort , :Use_Case .
+
+:Function  a              owl:Class ;
+        rdfs:label        "Function" ;
+        rdfs:subClassOf   :Solution_Artifact , :Node ;
+        :tag              "N_FUNCTION" ;
+        owl:disjointWith  :Change_Proposal , :Principal , :Block , :Use_Case , :Author , :Hardware , :XOR , :Requirement , :Software , :Use_Case_Diagramm , :Module , :Conjunction , :Text , :a , :Class_Diagramm , :EPK-Diagramm , :Port , :ElectronicPort , :Development_Artifact , :Event , :SoftwarePort , :Scenario , :Service , :Specification_Artifact , :Functionality , :State_Diagramm , :ER-Diagramm , :Activity_Diagramm , :View , :OR , :Decision , :Test_Case , :Change_Event , :AND , :Actor , :Electronic , :Issue , :MechanicPort , :Sequence_Diagramm , :Mechanic .
+
+_:b106  a                   owl:Class ;
+        owl:intersectionOf  ( _:b77 _:b34 ) .
+
+_:b107  a                   owl:Class ;
+        owl:intersectionOf  ( _:b53 _:b0 ) .
+
+_:b108  a                  owl:Restriction ;
+        owl:allValuesFrom  :weight ;
+        owl:onProperty     :attribute .
+
+:Conjunction  a           owl:Class ;
+        rdfs:label        "Conjunction" ;
+        rdfs:subClassOf   :Attribute , :Node ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b109 _:b110 _:b97 _:b57 _:b17 )
+                          ] ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b88 )
+                          ] ;
+        :tag              "N_CONJUNCTION" ;
+        owl:disjointWith  :Class_Diagramm , :weight , :Port , :MechanicPort , :priority , :Text , :Function , :b , :Activity , :value , :Use_Case_Diagramm , :Sequence_Diagramm , :dataType , :Scenario , :Module , :Software , :Functionality , :Abstraction_Level , :Test_Case , :Activity_Diagramm , :Event , :State_Diagramm , :Issue , :Change_Event , :conjugated , :direction , :Solution_Artifact , :status , :ElectronicPort , :Development_Artifact , :Block , :Use_Case , :Principal , :Change_Proposal , :State , :Electronic , :Requirement , :operator , :cost , :verified_attribute , :Mechanic , :Hardware , :Actor , :Decision , :Service , :test , :duration , :Specification_Artifact , :EPK-Diagramm , :ER-Diagramm , :View , :Author , :type , :SoftwarePort .
+
+_:b111  a               owl:Restriction ;
+        owl:hasValue    "Kelvin" ;
+        owl:onProperty  :unit .
+
+_:b112  a                  owl:Restriction ;
+        owl:allValuesFrom  :Change_Event ;
+        owl:onProperty     :target .
+
+_:b113  a                  owl:Restriction ;
+        owl:allValuesFrom  :Function ;
+        owl:onProperty     :target .
+
+_:b114  a               owl:Restriction ;
+        owl:hasValue    "BigInteger" ;
+        owl:onProperty  :datatype .
+
+:operator  a              owl:Class ;
+        rdfs:label        "operator" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b16 _:b115 _:b116 _:b117 _:b76 )
+                          ] ;
+        :tag              "A_TEST_CASE_CONDITION_OP" ;
+        owl:disjointWith  :a , :Abstraction_Level , :XOR , :value , :priority , :test , :AND , :duration , :Conjunction , :direction , :b , :weight , :OR , :conjugated , :dataType , :verified_attribute , :status , :type , :cost .
+
+:Change_Event  a          owl:Class ;
+        rdfs:label        "Change Event" ;
+        rdfs:subClassOf   :Event , :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b108 )
+                          ] ;
+        :tag              "N_CHANGE_EVENT" ;
+        owl:disjointWith  :Test_Case , :Issue , :Solution_Artifact , :Class_Diagramm , :Module , :Sequence_Diagramm , :Principal , :MechanicPort , :EPK-Diagramm , :Text , :Block , :ER-Diagramm , :Actor , :Port , :State_Diagramm , :OR , :a , :Decision , :Service , :Function , :SoftwarePort , :Specification_Artifact , :Activity_Diagramm , :Functionality , :Software , :State , :XOR , :AND , :Use_Case , :View , :Hardware , :Electronic , :Scenario , :Mechanic , :Activity , :Conjunction , :Use_Case_Diagramm , :Author , :ElectronicPort , :Change_Proposal , :Requirement .
+
+_:b118  a                  owl:Restriction ;
+        owl:allValuesFrom  :Block ;
+        owl:onProperty     :source .
+
+_:b119  a                  owl:Restriction ;
+        owl:allValuesFrom  :Event ;
+        owl:onProperty     :source .
+
+_:b117  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b82   a                  owl:Restriction ;
+        owl:allValuesFrom  :SoftwarePort ;
+        owl:onProperty     :target .
+
+:Causal_Relation  a       owl:Class ;
+        rdfs:label        "Causal Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        :tag              "E_RELATIONSHIP_CAUSAL" ;
+        owl:disjointWith  :isMandatoryFor , :Precondition , :Value_Flow , :Uses , :Defines , :Chronological_Relation , :Describes , :Referential_Relation , :Evolves_To , :Energy_Flow , :isConnectedTo , :Is_Alternative , :equals , :Trace , :Control_Flow , :Inclusion_Relation , :Flow , :Avoids , :Leads_To , :Refines , :Performs , :Attributional_Relation , :Includes , :Overlaps , :Material_Flow , :Contains , :Accounts_For , :Verifies , :Logical_Relation , :Based_On , :Replaces , :fulfills , :Information_Flow , :Satisfies , :Extends , :Conflicts , :Generalizes .
+
+:isMandatoryFor  a        owl:Class ;
+        rdfs:label        "isMandatoryFor" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b120 )
+                          ] ;
+        :tag              "E_IS_MANDATORY_FOR" ;
+        owl:disjointWith  :Describes , :Realizes , :Information_Flow , :Contains , :Extends , :Conflicts , :Creates , :Chronological_Relation , :Precondition , :Relationship , :Uses , :Referential_Relation , :Causal_Relation , :Material_Flow , :Satisfies , :Trace , :isConnectedTo , :Logical_Relation , :Accounts_For , :Attributional_Relation , :Verifies , :Control_Flow , :Value_Flow , :Is_Alternative , :Inclusion_Relation , :Performs , :Generalizes , :fulfills , :Implements , :Flow , :Requests , :Replaces , :equals , :Overlaps , :Energy_Flow , :Defines , :Avoids , :Requires , :Evolves_To , :Leads_To , :Includes , :Refines , :Based_On .
+
+:b      a                 owl:Class ;
+        rdfs:label        "b" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b2 _:b121 _:b122 _:b111 _:b38 )
+                          ] ;
+        :tag              "b" ;
+        owl:disjointWith  :duration , :priority , :type , :Abstraction_Level , :a , :weight , :cost , :test , :OR , :AND , :XOR , :value , :direction , :operator , :status , :verified_attribute , :conjugated , :dataType , :Conjunction .
+
+:Attributional_Relation
+        a                 owl:Class ;
+        rdfs:label        "Attributional Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        :tag              "E_RELATIONSHIP_ATTRIBUTIONAL" ;
+        owl:disjointWith  :Inclusion_Relation , :Realizes , :Is_Alternative , :Verifies , :isMandatoryFor , :Precondition , :Causal_Relation , :Referential_Relation , :Overlaps , :Implements , :Leads_To , :Requires , :fulfills , :Logical_Relation , :Value_Flow , :Conflicts , :Information_Flow , :Satisfies , :Describes , :isConnectedTo , :Trace , :equals , :Includes , :Uses , :Refines , :Material_Flow , :Chronological_Relation , :Energy_Flow , :Replaces , :Contains , :Based_On , :Extends , :Defines , :Generalizes , :Creates , :Control_Flow , :Requests , :Evolves_To , :Flow .
+
+_:b123  a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b41   a                  owl:Restriction ;
+        owl:allValuesFrom  :Block ;
+        owl:onProperty     :source .
+
+:type   a                 owl:Class ;
+        rdfs:label        "type" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b124 _:b125 _:b126 _:b127 _:b105 )
+                          ] ;
+        :tag              "A_REQUIREMENT_TYPE" ;
+        owl:disjointWith  :operator , :conjugated , :duration , :XOR , :cost , :value , :dataType , :OR , :direction , :verified_attribute , :Conjunction , :AND , :a , :priority , :Abstraction_Level , :weight , :status , :b , :test .
+
+:SoftwarePort  a          owl:Class ;
+        rdfs:label        "SoftwarePort" ;
+        rdfs:subClassOf   :Node , :Port ;
+        :tag              "N_PORT_SOFTWARE" ;
+        owl:disjointWith  :ER-Diagramm , :Specification_Artifact , :Sequence_Diagramm , :OR , :Class_Diagramm , :Development_Artifact , :Service , :Software , :Use_Case_Diagramm , :Use_Case , :Test_Case , :Decision , :Requirement , :a , :EPK-Diagramm , :Function , :Conjunction , :Text , :Block , :Electronic , :State , :Change_Event , :Author , :Event , :State_Diagramm , :ElectronicPort , :Functionality , :Principal , :Module , :View , :Solution_Artifact , :Activity , :AND , :MechanicPort , :Issue , :Activity_Diagramm , :Actor , :Hardware , :Scenario , :Change_Proposal , :Mechanic , :XOR .
+
+:View   a                 owl:Class ;
+        rdfs:label        "View" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        :tag              "N_VIEW" ;
+        owl:disjointWith  :Test_Case , :Solution_Artifact , :a , :Author , :Change_Event , :Decision , :OR , :Use_Case_Diagramm , :XOR , :Requirement , :SoftwarePort , :Block , :Activity , :Port , :Change_Proposal , :Electronic , :EPK-Diagramm , :Principal , :AND , :Use_Case , :Service , :Scenario , :Functionality , :Event , :Conjunction , :MechanicPort , :State , :Issue , :Function , :Actor , :Activity_Diagramm , :Text , :ER-Diagramm , :ElectronicPort , :Sequence_Diagramm , :Mechanic , :Class_Diagramm , :Hardware , :Specification_Artifact , :State_Diagramm , :Module , :Software .
+
+:Conflicts  a             owl:Class ;
+        rdfs:label        "Conflicts" ;
+        rdfs:subClassOf   :Edge , :Logical_Relation ;
+        :tag              "E_RELATIONSHIP_LOGICAL_CONFLICTS" ;
+        owl:disjointWith  :Causal_Relation , :Control_Flow , :Trace , :Uses , :Leads_To , :Replaces , :equals , :fulfills , :Attributional_Relation , :Refines , :Precondition , :Flow , :Information_Flow , :isConnectedTo , :Extends , :Defines , :Referential_Relation , :Includes , :Based_On , :Avoids , :Accounts_For , :Satisfies , :isMandatoryFor , :Implements , :Describes , :Verifies , :Evolves_To , :Requires , :Requests , :Generalizes , :Overlaps , :Realizes , :Energy_Flow , :Value_Flow , :Chronological_Relation , :Creates , :Performs , :Is_Alternative , :Contains , :Inclusion_Relation , :Material_Flow .
+
+_:b85   a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:status  a                owl:Class ;
+        rdfs:label        "status" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b35 _:b128 _:b129 _:b130 _:b131 )
+                          ] ;
+        :tag              "A_TEST_CASE_STATUS" ;
+        owl:disjointWith  :type , :cost , :weight , :Abstraction_Level , :AND , :duration , :XOR , :verified_attribute , :operator , :OR , :priority , :direction , :dataType , :Conjunction , :test , :a , :conjugated , :b , :value .
+
+:OR     a                 owl:Class ;
+        rdfs:label        "OR" ;
+        rdfs:subClassOf   :Conjunction ;
+        :tag              "ENUM_CONJUNCTION_OR" ;
+        owl:disjointWith  :Event , :Development_Artifact , :operator , :dataType , :Principal , :Scenario , :Decision , :Class_Diagramm , :test , :AND , :Function , :Requirement , :Actor , :verified_attribute , :type , :Activity , :ElectronicPort , :weight , :value , :Mechanic , :ER-Diagramm , :conjugated , :State_Diagramm , :Module , :Activity_Diagramm , :Text , :b , :Software , :EPK-Diagramm , :Solution_Artifact , :Sequence_Diagramm , :Specification_Artifact , :Use_Case , :Electronic , :Abstraction_Level , :Issue , :direction , :priority , :Use_Case_Diagramm , :Hardware , :XOR , :Author , :State , :Port , :Change_Proposal , :Test_Case , :MechanicPort , :Functionality , :status , :a , :SoftwarePort , :View , :cost , :Service , :Change_Event , :duration , :Block .
+
+:Edge   a                 owl:Class ;
+        rdfs:label        "Edge" ;
+        owl:disjointWith  :Node .
+
+:validityStart  a  owl:DatatypeProperty .
+
+:datatype  a    owl:DatatypeProperty .
+
+_:b11   a                   owl:Class ;
+        owl:intersectionOf  ( _:b61 _:b26 ) .
+
+_:b101  a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Use_Case_Diagramm  a     owl:Class ;
+        rdfs:label        "Use Case Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_USE_CASE_D" ;
+        owl:disjointWith  :Scenario , :Text , :Sequence_Diagramm , :AND , :Requirement , :OR , :EPK-Diagramm , :a , :Principal , :Activity_Diagramm , :Mechanic , :Electronic , :Event , :Hardware , :Change_Proposal , :Use_Case , :Activity , :Class_Diagramm , :Function , :Issue , :Test_Case , :Software , :State_Diagramm , :Change_Event , :ER-Diagramm , :Port , :Actor , :Block , :Author , :Functionality , :XOR , :ElectronicPort , :SoftwarePort , :View , :Conjunction , :Decision , :Solution_Artifact , :MechanicPort , :Service , :Module , :State .
+
+:Abstraction_Level  a     owl:Class ;
+        rdfs:label        "Abstraction Level" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b98 _:b31 _:b132 _:b133 _:b134 )
+                          ] ;
+        :tag              "A_REQUIREMENT_ABS_LEVEL" ;
+        owl:disjointWith  :value , :OR , :b , :priority , :type , :XOR , :operator , :AND , :duration , :conjugated , :weight , :dataType , :direction , :cost , :a , :test , :status , :Conjunction , :verified_attribute .
+
+:Flow   a                 owl:Class ;
+        rdfs:label        "Flow" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b12 )
+                          ] ;
+        :tag              "E_FLOW" ;
+        owl:disjointWith  :Inclusion_Relation , :Avoids , :equals , :Creates , :Realizes , :Satisfies , :isMandatoryFor , :Is_Alternative , :Defines , :Overlaps , :Includes , :Causal_Relation , :Trace , :Logical_Relation , :Requires , :Implements , :Chronological_Relation , :Uses , :Verifies , :Attributional_Relation , :Referential_Relation , :Generalizes , :Replaces , :Requests , :Accounts_For , :Evolves_To , :fulfills , :Refines , :Extends , :Leads_To , :Based_On , :Contains , :Relationship , :Performs , :Describes , :Precondition , :Conflicts , :isConnectedTo .
+
+_:b87   a               owl:Restriction ;
+        owl:hasValue    "Monetary" ;
+        owl:onProperty  :category .
+
+_:b135  a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+:Extends  a               owl:Class ;
+        rdfs:label        "Extends" ;
+        rdfs:subClassOf   :Logical_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_LOGICAL_EXTENDS" ;
+        owl:disjointWith  :equals , :Realizes , :Inclusion_Relation , :Includes , :isMandatoryFor , :Uses , :Attributional_Relation , :Verifies , :fulfills , :Chronological_Relation , :Value_Flow , :Is_Alternative , :Requires , :Flow , :Control_Flow , :Information_Flow , :Accounts_For , :Defines , :Avoids , :Causal_Relation , :Energy_Flow , :Conflicts , :Implements , :Describes , :Material_Flow , :isConnectedTo , :Performs , :Satisfies , :Overlaps , :Generalizes , :Leads_To , :Refines , :Replaces , :Trace , :Creates , :Evolves_To , :Precondition , :Requests , :Based_On , :Referential_Relation , :Contains .
+
+:Inclusion_Relation  a    owl:Class ;
+        rdfs:label        "Inclusion Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        :tag              "E_RELATIONSHIP_INCLUSION" ;
+        owl:disjointWith  :isConnectedTo , :Evolves_To , :fulfills , :Value_Flow , :Information_Flow , :Logical_Relation , :Based_On , :Flow , :Implements , :Referential_Relation , :Control_Flow , :Trace , :Avoids , :Leads_To , :Describes , :Precondition , :Conflicts , :Satisfies , :isMandatoryFor , :Refines , :Requires , :Attributional_Relation , :Uses , :Energy_Flow , :Overlaps , :equals , :Defines , :Creates , :Accounts_For , :Realizes , :Performs , :Chronological_Relation , :Material_Flow , :Extends , :Replaces , :Requests , :Is_Alternative , :Causal_Relation , :Verifies .
+
+_:b136  a                  owl:Restriction ;
+        owl:allValuesFrom  :dataType ;
+        owl:onProperty     :attribute .
+
+_:b69   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Based_On  a              owl:Class ;
+        rdfs:label        "Based On" ;
+        rdfs:subClassOf   :Chronological_Relation , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b137 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_BASED_ON" ;
+        owl:disjointWith  :Inclusion_Relation , :Defines , :Describes , :Precondition , :Creates , :Realizes , :Generalizes , :Refines , :Uses , :Attributional_Relation , :Logical_Relation , :equals , :Requests , :isMandatoryFor , :Causal_Relation , :Satisfies , :Evolves_To , :Implements , :Is_Alternative , :isConnectedTo , :Value_Flow , :Leads_To , :Information_Flow , :Accounts_For , :Verifies , :Energy_Flow , :Avoids , :Contains , :Control_Flow , :fulfills , :Overlaps , :Requires , :Extends , :Performs , :Flow , :Trace , :Referential_Relation , :Material_Flow , :Conflicts , :Replaces , :Includes .
+
+:AND    a                 owl:Class ;
+        rdfs:label        "AND" ;
+        rdfs:subClassOf   :Conjunction ;
+        :tag              "ENUM_CONJUNCTION_AND" ;
+        owl:disjointWith  :Electronic , :duration , :Specification_Artifact , :Function , :XOR , :value , :Text , :Activity , :direction , :Service , :Solution_Artifact , :OR , :status , :weight , :Test_Case , :Software , :Principal , :ElectronicPort , :test , :Functionality , :Abstraction_Level , :operator , :Actor , :Sequence_Diagramm , :Scenario , :Use_Case , :Requirement , :Event , :State_Diagramm , :Mechanic , :b , :dataType , :State , :Port , :View , :Change_Proposal , :Use_Case_Diagramm , :MechanicPort , :Decision , :Hardware , :Block , :Change_Event , :conjugated , :SoftwarePort , :Class_Diagramm , :Issue , :a , :type , :Development_Artifact , :priority , :ER-Diagramm , :Module , :EPK-Diagramm , :Activity_Diagramm , :Author , :cost , :verified_attribute .
+
+_:b95   a                  owl:Restriction ;
+        owl:allValuesFrom  :Requirement ;
+        owl:onProperty     :target .
+
+_:b134  a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+:Evolves_To  a            owl:Class ;
+        rdfs:label        "Evolves To" ;
+        rdfs:subClassOf   :Edge , :Chronological_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b106 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_EVOLVES_TO" ;
+        owl:disjointWith  :Overlaps , :Material_Flow , :isMandatoryFor , :Includes , :Precondition , :Replaces , :Accounts_For , :Control_Flow , :Causal_Relation , :Creates , :Realizes , :fulfills , :Defines , :Implements , :Contains , :Referential_Relation , :Information_Flow , :Extends , :Logical_Relation , :Leads_To , :Avoids , :Flow , :equals , :Requires , :Uses , :Trace , :Attributional_Relation , :Satisfies , :Is_Alternative , :Refines , :Based_On , :Energy_Flow , :Performs , :Generalizes , :Inclusion_Relation , :isConnectedTo , :Requests , :Verifies , :Conflicts , :Value_Flow , :Describes .
+
+:Attribute  a   owl:Class .
+
+:Value_Flow  a            owl:Class ;
+        rdfs:label        "Value Flow" ;
+        rdfs:subClassOf   :Flow , :Edge ;
+        :tag              "E_FLOW_VALUE" ;
+        owl:disjointWith  :Based_On , :Performs , :Information_Flow , :Implements , :Generalizes , :Requests , :Attributional_Relation , :Relationship , :Uses , :isMandatoryFor , :Realizes , :Requires , :Leads_To , :Energy_Flow , :Inclusion_Relation , :Contains , :Conflicts , :Refines , :Logical_Relation , :equals , :Trace , :fulfills , :Overlaps , :Material_Flow , :Creates , :Verifies , :Precondition , :isConnectedTo , :Extends , :Includes , :Control_Flow , :Accounts_For , :Causal_Relation , :Replaces , :Satisfies , :Referential_Relation , :Is_Alternative , :Avoids , :Evolves_To , :Defines , :Chronological_Relation , :Describes .
+
+_:b138  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b139  a                  owl:Restriction ;
+        owl:allValuesFrom  :cost ;
+        owl:onProperty     :attribute .
+
+<http://www.sfb768.tum.de/voc/pssif/ns>
+        a       owl:Ontology .
+
+_:b130  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b110  a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:category  a    owl:DatatypeProperty .
+
+_:b20   a                  owl:Restriction ;
+        owl:allValuesFrom  :Requirement ;
+        owl:onProperty     :target .
+
+_:b127  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:Replaces  a              owl:Class ;
+        rdfs:label        "Replaces" ;
+        rdfs:subClassOf   :Chronological_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_REPLACES" ;
+        owl:disjointWith  :Refines , :Requests , :Attributional_Relation , :Requires , :Avoids , :Defines , :Accounts_For , :Contains , :Referential_Relation , :Evolves_To , :Is_Alternative , :Uses , :Implements , :Performs , :Based_On , :Flow , :Realizes , :Conflicts , :Describes , :fulfills , :Generalizes , :Material_Flow , :Information_Flow , :Extends , :Overlaps , :Creates , :Precondition , :Verifies , :Logical_Relation , :Includes , :equals , :Leads_To , :Satisfies , :Control_Flow , :Causal_Relation , :Inclusion_Relation , :Value_Flow , :isConnectedTo , :isMandatoryFor , :Energy_Flow , :Trace .
+
+:Control_Flow  a          owl:Class ;
+        rdfs:label        "Control Flow" ;
+        rdfs:subClassOf   :Flow , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b140 )
+                          ] ;
+        :tag              "E_FLOW_CONTROL" ;
+        owl:disjointWith  :isConnectedTo , :Accounts_For , :Includes , :Verifies , :equals , :Is_Alternative , :Avoids , :Realizes , :Overlaps , :Creates , :Referential_Relation , :Extends , :Chronological_Relation , :Conflicts , :Evolves_To , :Describes , :Performs , :Implements , :Inclusion_Relation , :Uses , :Based_On , :Contains , :Satisfies , :Replaces , :Precondition , :fulfills , :Energy_Flow , :Material_Flow , :Trace , :Requires , :Refines , :Information_Flow , :Value_Flow , :Defines , :Causal_Relation , :Relationship , :Generalizes , :isMandatoryFor , :Logical_Relation , :Requests , :Leads_To , :Attributional_Relation .
+
+_:b52   a                   owl:Class ;
+        owl:intersectionOf  ( _:b119 _:b75 ) .
+
+_:b141  a                   owl:Class ;
+        owl:intersectionOf  ( _:b92 _:b48 ) .
+
+:value  a                 owl:Class , owl:DatatypeProperty ;
+        rdfs:label        "value" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b63 _:b29 _:b142 _:b143 _:b135 )
+                          ] ;
+        :tag              "A_TEST_CASE_CONDITION_VALUE" ;
+        owl:disjointWith  :conjugated , :type , :AND , :direction , :dataType , :b , :operator , :test , :a , :status , :cost , :XOR , :duration , :priority , :OR , :Abstraction_Level , :Conjunction , :verified_attribute , :weight .
+
+:Scenario  a              owl:Class ;
+        rdfs:label        "Scenario" ;
+        rdfs:subClassOf   :Node , :Specification_Artifact ;
+        :tag              "N_SCENARIO" ;
+        owl:disjointWith  :Activity_Diagramm , :Functionality , :Text , :Solution_Artifact , :ER-Diagramm , :a , :Issue , :Port , :Hardware , :Mechanic , :Actor , :Function , :Activity , :Principal , :MechanicPort , :Event , :XOR , :State , :SoftwarePort , :Requirement , :EPK-Diagramm , :Sequence_Diagramm , :OR , :Change_Event , :Author , :Service , :State_Diagramm , :Decision , :Use_Case , :Test_Case , :Class_Diagramm , :ElectronicPort , :Block , :View , :Module , :Use_Case_Diagramm , :Conjunction , :AND , :Electronic , :Software , :Change_Proposal .
+
+_:b144  a               owl:Restriction ;
+        owl:hasValue    "Time" ;
+        owl:onProperty  :category .
+
+_:b122  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:conjugated  a            owl:Class ;
+        rdfs:label        "conjugated" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b123 _:b79 _:b37 _:b145 _:b144 )
+                          ] ;
+        :tag              "A_CONJUGATED" ;
+        owl:disjointWith  :cost , :weight , :AND , :type , :test , :direction , :OR , :priority , :XOR , :operator , :verified_attribute , :status , :b , :duration , :Abstraction_Level , :a , :Conjunction , :value , :dataType .
+
+_:b24   a               owl:Restriction ;
+        owl:hasValue    "Time" ;
+        owl:onProperty  :category .
+
+_:b146  a                  owl:Restriction ;
+        owl:allValuesFrom  :Event ;
+        owl:onProperty     :target .
+
+_:b147  a                  owl:Restriction ;
+        owl:allValuesFrom  :Function ;
+        owl:onProperty     :source .
+
+_:b148  a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Mechanic  a              owl:Class ;
+        rdfs:label        "Mechanic" ;
+        rdfs:subClassOf   :Node , :Hardware ;
+        :tag              "N_MECHANIC" ;
+        owl:disjointWith  :Actor , :SoftwarePort , :Port , :Use_Case , :Class_Diagramm , :ElectronicPort , :State_Diagramm , :Conjunction , :Development_Artifact , :Change_Event , :Functionality , :OR , :Change_Proposal , :State , :Scenario , :AND , :Author , :Use_Case_Diagramm , :Sequence_Diagramm , :Text , :MechanicPort , :Principal , :Requirement , :Event , :Activity , :ER-Diagramm , :XOR , :Specification_Artifact , :Test_Case , :Activity_Diagramm , :Issue , :Electronic , :View , :Decision , :Module , :EPK-Diagramm , :Function , :Service , :Software , :a .
+
+_:b116  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:group  a       owl:DatatypeProperty .
+
+:Realizes  a              owl:Class ;
+        rdfs:label        "Realizes" ;
+        rdfs:subClassOf   :Causal_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_CAUSAL_REALIZES" ;
+        owl:disjointWith  :Referential_Relation , :Generalizes , :Requests , :Describes , :Conflicts , :Material_Flow , :Flow , :Value_Flow , :Trace , :Based_On , :Replaces , :Avoids , :isConnectedTo , :Refines , :Implements , :Requires , :Information_Flow , :Verifies , :Overlaps , :isMandatoryFor , :Uses , :Evolves_To , :Energy_Flow , :Attributional_Relation , :Control_Flow , :Extends , :Includes , :fulfills , :Contains , :Creates , :Inclusion_Relation , :Logical_Relation , :Is_Alternative , :Accounts_For , :Satisfies , :equals , :Performs , :Chronological_Relation , :Defines , :Leads_To , :Precondition .
+
+_:b81   a                  owl:Restriction ;
+        owl:allValuesFrom  :SoftwarePort ;
+        owl:onProperty     :source .
+
+_:b100  a                  owl:Restriction ;
+        owl:allValuesFrom  :value ;
+        owl:onProperty     :attribute .
+
+:source  a      owl:ObjectProperty .
+
+_:b149  a                   owl:Class ;
+        owl:intersectionOf  ( _:b15 _:b58 ) .
+
+_:b84   a               owl:Restriction ;
+        owl:hasValue    "BigDecimal" ;
+        owl:onProperty  :datatype .
+
+:Precondition  a          owl:Class ;
+        rdfs:label        "Precondition" ;
+        rdfs:subClassOf   :Chronological_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_PRECONDITION" ;
+        owl:disjointWith  :Contains , :Satisfies , :Value_Flow , :Realizes , :Flow , :Extends , :fulfills , :isConnectedTo , :Based_On , :Implements , :Leads_To , :Avoids , :Control_Flow , :Attributional_Relation , :Requires , :Conflicts , :Accounts_For , :Overlaps , :Creates , :Requests , :Refines , :Performs , :Generalizes , :Logical_Relation , :isMandatoryFor , :Material_Flow , :Describes , :Causal_Relation , :Is_Alternative , :Uses , :Defines , :Referential_Relation , :Includes , :Information_Flow , :Evolves_To , :Trace , :Inclusion_Relation , :Verifies , :Replaces , :equals , :Energy_Flow .
+
+:Uses   a                 owl:Class ;
+        rdfs:label        "Uses" ;
+        rdfs:subClassOf   :Referential_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_REFERENTIAL_USES" ;
+        owl:disjointWith  :Verifies , :Overlaps , :Value_Flow , :Inclusion_Relation , :equals , :Satisfies , :Logical_Relation , :isMandatoryFor , :Causal_Relation , :Requests , :fulfills , :Evolves_To , :Is_Alternative , :Replaces , :Creates , :Includes , :Precondition , :Attributional_Relation , :Control_Flow , :Performs , :isConnectedTo , :Refines , :Describes , :Energy_Flow , :Avoids , :Extends , :Implements , :Accounts_For , :Based_On , :Defines , :Flow , :Contains , :Generalizes , :Conflicts , :Leads_To , :Chronological_Relation , :Trace , :Information_Flow , :Requires , :Realizes , :Material_Flow .
+
+_:b42   a                  owl:Restriction ;
+        owl:allValuesFrom  :Block ;
+        owl:onProperty     :target .
+
+_:b39   a                   owl:Class ;
+        owl:intersectionOf  ( _:b104 _:b60 ) .
+
+_:b86   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b143  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:globalId  a    owl:DatatypeProperty .
+
+_:b47   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+_:b150  a                  owl:Restriction ;
+        owl:allValuesFrom  :direction ;
+        owl:onProperty     :attribute .
+
+:directed  a    owl:DatatypeProperty .
+
+_:b94   a                  owl:Restriction ;
+        owl:allValuesFrom  :Principal ;
+        owl:onProperty     :source .
+
+_:b133  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b66   a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:test   a                 owl:Class ;
+        rdfs:label        "test" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b33 _:b151 _:b152 _:b138 _:b96 )
+                          ] ;
+        :tag              "test2" ;
+        owl:disjointWith  :AND , :duration , :priority , :type , :value , :weight , :operator , :status , :Abstraction_Level , :cost , :dataType , :OR , :a , :direction , :b , :conjugated , :Conjunction , :verified_attribute , :XOR .
+
+_:b50   a                   owl:Class ;
+        owl:intersectionOf  ( _:b118 _:b74 ) .
+
+:MechanicPort  a          owl:Class ;
+        rdfs:label        "MechanicPort" ;
+        rdfs:subClassOf   :Node , :Port ;
+        :tag              "N_PORT_MECHANIC" ;
+        owl:disjointWith  :Service , :Conjunction , :Solution_Artifact , :Issue , :Requirement , :SoftwarePort , :State_Diagramm , :Module , :Author , :Change_Proposal , :Principal , :Electronic , :XOR , :Mechanic , :EPK-Diagramm , :Change_Event , :Actor , :Hardware , :Sequence_Diagramm , :Functionality , :a , :Scenario , :Development_Artifact , :Block , :Use_Case , :Activity , :Function , :View , :OR , :Decision , :Class_Diagramm , :AND , :State , :ElectronicPort , :Use_Case_Diagramm , :Specification_Artifact , :Test_Case , :Activity_Diagramm , :Software , :ER-Diagramm , :Event , :Text .
+
+_:b152  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b129  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b56   a                  owl:Restriction ;
+        owl:allValuesFrom  :Requirement ;
+        owl:onProperty     :target .
+
+_:b109  a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b19   a                  owl:Restriction ;
+        owl:allValuesFrom  :Specification_Artifact ;
+        owl:onProperty     :source .
+
+_:b153  a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+_:b131  a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+_:b124  a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Logical_Relation  a      owl:Class ;
+        rdfs:label        "Logical Relation" ;
+        rdfs:subClassOf   :Edge , :Relationship ;
+        :tag              "E_RELATIONSHIP_LOGICAL" ;
+        owl:disjointWith  :Defines , :Generalizes , :Based_On , :Evolves_To , :Includes , :Accounts_For , :Precondition , :Inclusion_Relation , :equals , :Value_Flow , :Leads_To , :Performs , :Implements , :Referential_Relation , :Describes , :Uses , :Attributional_Relation , :Flow , :Causal_Relation , :Refines , :isMandatoryFor , :isConnectedTo , :fulfills , :Creates , :Control_Flow , :Realizes , :Contains , :Avoids , :Information_Flow , :Replaces , :Chronological_Relation , :Material_Flow , :Energy_Flow , :Requests , :Requires , :Trace .
+
+_:b30   a                  owl:Restriction ;
+        owl:allValuesFrom  :weight ;
+        owl:onProperty     :attribute .
+
+_:b103  a               owl:Restriction ;
+        owl:hasValue    "MetaData" ;
+        owl:onProperty  :category .
+
+_:b140  a                   owl:Class ;
+        owl:intersectionOf  ( _:b147 _:b113 ) .
+
+_:b126  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+:name   a       owl:DatatypeProperty .
+
+:Relationship  a          owl:Class ;
+        rdfs:label        "Relationship" ;
+        rdfs:subClassOf   :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b107 )
+                          ] ;
+        :tag              "E_RELATIONSHIP" ;
+        owl:disjointWith  :Material_Flow , :Control_Flow , :isConnectedTo , :fulfills , :Energy_Flow , :equals , :Flow , :Value_Flow , :Information_Flow , :isMandatoryFor .
+
+_:b72   a               owl:Restriction ;
+        owl:hasValue    "Weight" ;
+        owl:onProperty  :category .
+
+:Describes  a             owl:Class ;
+        rdfs:label        "Describes" ;
+        rdfs:subClassOf   :Referential_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_REFERENTIAL_DESCRIBES" ;
+        owl:disjointWith  :Attributional_Relation , :isConnectedTo , :Logical_Relation , :Performs , :Overlaps , :Evolves_To , :Inclusion_Relation , :Creates , :Chronological_Relation , :Is_Alternative , :Avoids , :Requires , :Causal_Relation , :Trace , :Information_Flow , :Uses , :equals , :Control_Flow , :Defines , :Replaces , :Energy_Flow , :Generalizes , :Flow , :Contains , :Includes , :isMandatoryFor , :Realizes , :fulfills , :Refines , :Conflicts , :Precondition , :Extends , :Material_Flow , :Accounts_For , :Requests , :Verifies , :Value_Flow , :Based_On , :Implements , :Satisfies , :Leads_To .
+
+_:b145  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+_:b121  a               owl:Restriction ;
+        owl:hasValue    "BigInteger" ;
+        owl:onProperty  :datatype .
+
+_:b68   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :target .
+
+_:b23   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:Includes  a              owl:Class ;
+        rdfs:label        "Includes" ;
+        rdfs:subClassOf   :Inclusion_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_INCLUSION_INCLUDES" ;
+        owl:disjointWith  :Overlaps , :Refines , :Describes , :Performs , :Defines , :Realizes , :Requests , :Uses , :Referential_Relation , :Material_Flow , :Implements , :Logical_Relation , :Attributional_Relation , :Precondition , :Replaces , :isConnectedTo , :Energy_Flow , :Control_Flow , :isMandatoryFor , :Trace , :Is_Alternative , :Information_Flow , :Leads_To , :Evolves_To , :fulfills , :Causal_Relation , :Extends , :Requires , :Contains , :Generalizes , :Flow , :Value_Flow , :Satisfies , :equals , :Creates , :Verifies , :Avoids , :Based_On , :Chronological_Relation , :Accounts_For , :Conflicts .
+
+:State_Diagramm  a        owl:Class ;
+        rdfs:label        "State Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_STATE_D" ;
+        owl:disjointWith  :Function , :Class_Diagramm , :XOR , :Solution_Artifact , :Activity_Diagramm , :Change_Event , :ElectronicPort , :SoftwarePort , :Requirement , :EPK-Diagramm , :Service , :Port , :MechanicPort , :OR , :a , :View , :Module , :Event , :Sequence_Diagramm , :Conjunction , :Activity , :Test_Case , :Actor , :Use_Case , :Mechanic , :Software , :AND , :Author , :Block , :Change_Proposal , :Electronic , :Scenario , :ER-Diagramm , :Principal , :Decision , :State , :Use_Case_Diagramm , :Hardware , :Functionality , :Issue , :Text .
+
+_:b154  a                  owl:Restriction ;
+        owl:allValuesFrom  :Event ;
+        owl:onProperty     :source .
+
+:version  a     owl:DatatypeProperty .
+
+:Performs  a              owl:Class ;
+        rdfs:label        "Performs" ;
+        rdfs:subClassOf   :Edge , :Attributional_Relation ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b141 )
+                          ] ;
+        :tag              "E_RELATIONSHIP_ATTRIBUTIONAL_PERFORMS" ;
+        owl:disjointWith  :Realizes , :Material_Flow , :Inclusion_Relation , :Trace , :Value_Flow , :Contains , :Extends , :Chronological_Relation , :Conflicts , :Precondition , :Replaces , :Information_Flow , :Referential_Relation , :Requests , :Leads_To , :Defines , :Control_Flow , :Generalizes , :Creates , :Energy_Flow , :Causal_Relation , :Satisfies , :isMandatoryFor , :Uses , :equals , :Refines , :Based_On , :fulfills , :Is_Alternative , :Verifies , :isConnectedTo , :Includes , :Requires , :Overlaps , :Implements , :Flow , :Accounts_For , :Avoids , :Logical_Relation , :Evolves_To , :Describes .
+
+:Actor  a                 owl:Class ;
+        rdfs:label        "Actor" ;
+        rdfs:subClassOf   :Block , :Node ;
+        :tag              "N_ACTOR" ;
+        owl:disjointWith  :Port , :Class_Diagramm , :Specification_Artifact , :Test_Case , :Module , :Scenario , :Sequence_Diagramm , :XOR , :Requirement , :State , :a , :Electronic , :Service , :Software , :Use_Case_Diagramm , :Text , :Activity , :EPK-Diagramm , :Hardware , :Mechanic , :ElectronicPort , :Change_Proposal , :OR , :SoftwarePort , :Activity_Diagramm , :Use_Case , :ER-Diagramm , :Decision , :Issue , :Conjunction , :Event , :AND , :MechanicPort , :View , :State_Diagramm , :Development_Artifact , :Functionality , :Function , :Change_Event .
+
+:dataType  a              owl:Class ;
+        rdfs:label        "dataType" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b93 _:b51 _:b78 _:b36 _:b155 )
+                          ] ;
+        :tag              "A_DATA_TYPE" ;
+        owl:disjointWith  :test , :Conjunction , :verified_attribute , :operator , :OR , :XOR , :direction , :duration , :value , :AND , :type , :cost , :conjugated , :priority , :b , :weight , :status , :a , :Abstraction_Level .
+
+_:b115  a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+_:b120  a                   owl:Class ;
+        owl:intersectionOf  ( _:b54 _:b10 ) .
+
+:Avoids  a                owl:Class ;
+        rdfs:label        "Avoids" ;
+        rdfs:subClassOf   :Edge , :Attributional_Relation ;
+        :tag              "E_RELATIONSHIP_ATTRIBUTIONAL_AVOIDS" ;
+        owl:disjointWith  :Requires , :Energy_Flow , :Realizes , :Trace , :Requests , :Replaces , :Contains , :Implements , :Extends , :Logical_Relation , :Flow , :Control_Flow , :Defines , :Based_On , :Overlaps , :Accounts_For , :Performs , :equals , :Leads_To , :Chronological_Relation , :fulfills , :Value_Flow , :Is_Alternative , :Refines , :Information_Flow , :Includes , :Uses , :Inclusion_Relation , :isMandatoryFor , :Evolves_To , :Creates , :Material_Flow , :Precondition , :Conflicts , :Verifies , :Generalizes , :Satisfies , :isConnectedTo , :Referential_Relation , :Describes , :Causal_Relation .
+
+:tag    a       owl:AnnotationProperty .
+
+_:b83   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+:Port   a                 owl:Class ;
+        rdfs:label        "Port" ;
+        rdfs:subClassOf   :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b156 _:b150 _:b136 )
+                          ] ;
+        :tag              "N_PORT" ;
+        owl:disjointWith  :Service , :Issue , :Sequence_Diagramm , :a , :Actor , :Event , :Conjunction , :Change_Event , :Test_Case , :XOR , :Use_Case_Diagramm , :Block , :Functionality , :Decision , :Solution_Artifact , :Principal , :Specification_Artifact , :Author , :Scenario , :Text , :Activity , :Activity_Diagramm , :Change_Proposal , :Use_Case , :ER-Diagramm , :Development_Artifact , :Mechanic , :Module , :Function , :AND , :State , :Class_Diagramm , :Software , :View , :Hardware , :OR , :Electronic , :Requirement , :EPK-Diagramm , :State_Diagramm .
+
+_:b8    a                  owl:Restriction ;
+        owl:allValuesFrom  :Abstraction_Level ;
+        owl:onProperty     :attribute .
+
+:Refines  a               owl:Class ;
+        rdfs:label        "Refines" ;
+        rdfs:subClassOf   :Chronological_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_CHRONOLOGICAL_REFINES" ;
+        owl:disjointWith  :Creates , :Precondition , :Based_On , :Includes , :Generalizes , :Implements , :equals , :Logical_Relation , :isMandatoryFor , :Causal_Relation , :Leads_To , :Requests , :Defines , :Information_Flow , :Satisfies , :isConnectedTo , :Is_Alternative , :Avoids , :Contains , :Control_Flow , :Value_Flow , :Uses , :fulfills , :Performs , :Inclusion_Relation , :Trace , :Attributional_Relation , :Verifies , :Describes , :Overlaps , :Requires , :Replaces , :Referential_Relation , :Conflicts , :Realizes , :Extends , :Accounts_For , :Flow , :Material_Flow , :Energy_Flow , :Evolves_To .
+
+:Author  a                owl:Class ;
+        rdfs:label        "Author" ;
+        rdfs:subClassOf   :Actor , :Node ;
+        :tag              "N_AUTHOR" ;
+        owl:disjointWith  :Conjunction , :Requirement , :Functionality , :Development_Artifact , :Change_Event , :Decision , :Use_Case , :Mechanic , :Sequence_Diagramm , :Event , :Function , :State_Diagramm , :MechanicPort , :AND , :Electronic , :Change_Proposal , :OR , :Activity_Diagramm , :Activity , :Service , :Text , :Module , :a , :EPK-Diagramm , :ER-Diagramm , :SoftwarePort , :View , :Port , :Hardware , :ElectronicPort , :Software , :Use_Case_Diagramm , :Issue , :State , :Scenario , :Principal , :Class_Diagramm , :Specification_Artifact , :XOR , :Test_Case .
+
+:Trace  a                 owl:Class ;
+        rdfs:label        "Trace" ;
+        rdfs:subClassOf   :Edge , :Referential_Relation ;
+        :tag              "E_RELATIONSHIP_REFERENTIAL_TRACE" ;
+        owl:disjointWith  :Energy_Flow , :Inclusion_Relation , :Material_Flow , :Defines , :Information_Flow , :Extends , :Flow , :Control_Flow , :Attributional_Relation , :Avoids , :Includes , :Causal_Relation , :Describes , :fulfills , :Uses , :Conflicts , :Precondition , :Requires , :Creates , :Is_Alternative , :Contains , :Chronological_Relation , :Performs , :isMandatoryFor , :Leads_To , :Generalizes , :Accounts_For , :equals , :isConnectedTo , :Requests , :Evolves_To , :Logical_Relation , :Overlaps , :Based_On , :Verifies , :Realizes , :Replaces , :Value_Flow , :Refines , :Satisfies , :Implements .
+
+:EPK-Diagramm  a          owl:Class ;
+        rdfs:label        "EPK-Diagramm" ;
+        rdfs:subClassOf   :Specification_Artifact , :Node ;
+        :tag              "N_EPK_D" ;
+        owl:disjointWith  :Electronic , :Event , :Issue , :Software , :Class_Diagramm , :Scenario , :OR , :View , :Author , :a , :Use_Case_Diagramm , :Mechanic , :Change_Event , :Conjunction , :ER-Diagramm , :State_Diagramm , :Module , :Functionality , :AND , :State , :Hardware , :Port , :XOR , :Activity_Diagramm , :Activity , :MechanicPort , :Service , :Test_Case , :Decision , :Solution_Artifact , :Actor , :Use_Case , :Sequence_Diagramm , :Requirement , :ElectronicPort , :Block , :Change_Proposal , :SoftwarePort , :Principal , :Text , :Function .
+
+:Event  a                 owl:Class ;
+        rdfs:label        "Event" ;
+        rdfs:subClassOf   :Development_Artifact , :Node ;
+        :tag              "N_EVENT" ;
+        owl:disjointWith  :Function , :a , :Module , :ER-Diagramm , :Activity_Diagramm , :Block , :Actor , :EPK-Diagramm , :Activity , :OR , :Requirement , :Author , :ElectronicPort , :Principal , :XOR , :Use_Case_Diagramm , :SoftwarePort , :Service , :Scenario , :Specification_Artifact , :Text , :Software , :State_Diagramm , :View , :Functionality , :MechanicPort , :Use_Case , :Mechanic , :Sequence_Diagramm , :Port , :State , :Hardware , :Class_Diagramm , :Test_Case , :Conjunction , :AND , :Solution_Artifact , :Electronic .
+
+:Information_Flow  a      owl:Class ;
+        rdfs:label        "Information Flow" ;
+        rdfs:subClassOf   :Edge , :Flow ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b149 )
+                          ] ;
+        :tag              "E_FLOW_INFORMATION" ;
+        owl:disjointWith  :Creates , :Based_On , :Relationship , :Chronological_Relation , :Inclusion_Relation , :isConnectedTo , :Satisfies , :Overlaps , :Implements , :Includes , :Leads_To , :Requests , :Refines , :Defines , :Evolves_To , :Contains , :Describes , :Attributional_Relation , :Value_Flow , :Verifies , :Uses , :Logical_Relation , :Material_Flow , :Performs , :Avoids , :Generalizes , :Energy_Flow , :equals , :Replaces , :Referential_Relation , :Trace , :Realizes , :Accounts_For , :Precondition , :Extends , :Control_Flow , :Is_Alternative , :Causal_Relation , :Requires , :isMandatoryFor , :fulfills , :Conflicts .
+
+_:b90   a                  owl:Restriction ;
+        owl:allValuesFrom  :Node ;
+        owl:onProperty     :target .
+
+_:b142  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b46   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+_:b156  a                  owl:Restriction ;
+        owl:allValuesFrom  :conjugated ;
+        owl:onProperty     :attribute .
+
+:Energy_Flow  a           owl:Class ;
+        rdfs:label        "Energy Flow" ;
+        rdfs:subClassOf   :Flow , :Edge ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b45 )
+                          ] ;
+        :tag              "E_FLOW_ENERGY" ;
+        owl:disjointWith  :fulfills , :Control_Flow , :Uses , :Satisfies , :Includes , :Describes , :Generalizes , :Conflicts , :Overlaps , :Contains , :isConnectedTo , :Defines , :Accounts_For , :Attributional_Relation , :Performs , :isMandatoryFor , :Relationship , :Precondition , :Extends , :Causal_Relation , :Logical_Relation , :Information_Flow , :equals , :Is_Alternative , :Refines , :Evolves_To , :Implements , :Chronological_Relation , :Material_Flow , :Trace , :Realizes , :Inclusion_Relation , :Referential_Relation , :Avoids , :Verifies , :Creates , :Based_On , :Replaces , :Leads_To , :Requests , :Requires , :Value_Flow .
+
+_:b132  a               owl:Restriction ;
+        owl:hasValue    "false" ;
+        owl:onProperty  :visibility .
+
+_:b65   a               owl:Restriction ;
+        owl:hasValue    "defaultGroup" ;
+        owl:onProperty  :group .
+
+_:b137  a                   owl:Class ;
+        owl:intersectionOf  ( _:b153 _:b112 ) .
+
+_:b157  a               owl:Restriction ;
+        owl:hasValue    "Time" ;
+        owl:onProperty  :category .
+
+:Overlaps  a              owl:Class ;
+        rdfs:label        "Overlaps" ;
+        rdfs:subClassOf   :Logical_Relation , :Edge ;
+        :tag              "E_RELATIONSHIP_LOGICAL_OVERLAPS" ;
+        owl:disjointWith  :Inclusion_Relation , :Precondition , :Value_Flow , :Requests , :Includes , :Extends , :Verifies , :Based_On , :isConnectedTo , :Uses , :Avoids , :Requires , :Material_Flow , :Information_Flow , :Trace , :Implements , :Satisfies , :Chronological_Relation , :Evolves_To , :Creates , :Describes , :Is_Alternative , :fulfills , :isMandatoryFor , :Causal_Relation , :Accounts_For , :Flow , :Replaces , :Control_Flow , :Referential_Relation , :equals , :Attributional_Relation , :Defines , :Performs , :Energy_Flow , :Refines , :Realizes , :Contains , :Generalizes , :Conflicts , :Leads_To .
+
+_:b151  a               owl:Restriction ;
+        owl:hasValue    "BigDecimal" ;
+        owl:onProperty  :datatype .
+
+:Block  a                 owl:Class ;
+        rdfs:label        "Block" ;
+        rdfs:subClassOf   :Solution_Artifact , :Node ;
+        rdfs:subClassOf   [ a            owl:Class ;
+                            owl:unionOf  ( _:b139 )
+                          ] ;
+        :tag              "N_BLOCK" ;
+        owl:disjointWith  :View , :Activity , :Development_Artifact , :Text , :AND , :Function , :Port , :State_Diagramm , :OR , :SoftwarePort , :Requirement , :Use_Case_Diagramm , :Class_Diagramm , :ER-Diagramm , :Change_Proposal , :Event , :EPK-Diagramm , :Conjunction , :Scenario , :Specification_Artifact , :MechanicPort , :Test_Case , :a , :Sequence_Diagramm , :Decision , :State , :ElectronicPort , :Use_Case , :Functionality , :Change_Event , :Issue , :XOR , :Activity_Diagramm .
+
+_:b128  a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:State  a                 owl:Class ;
+        rdfs:label        "State" ;
+        rdfs:subClassOf   :Function , :Node ;
+        :tag              "N_STATE" ;
+        owl:disjointWith  :Change_Proposal , :ElectronicPort , :Mechanic , :Scenario , :Requirement , :OR , :MechanicPort , :Block , :Electronic , :Principal , :Activity_Diagramm , :a , :State_Diagramm , :Specification_Artifact , :EPK-Diagramm , :Service , :Conjunction , :Use_Case , :Actor , :Hardware , :Functionality , :Issue , :AND , :Development_Artifact , :Module , :SoftwarePort , :Sequence_Diagramm , :Software , :Decision , :Test_Case , :Port , :XOR , :Author , :Use_Case_Diagramm , :ER-Diagramm , :View , :Activity , :Change_Event , :Text , :Class_Diagramm , :Event .
+
+_:b155  a               owl:Restriction ;
+        owl:hasValue    "Time" ;
+        owl:onProperty  :category .
+
+_:b55   a                  owl:Restriction ;
+        owl:allValuesFrom  :Solution_Artifact ;
+        owl:onProperty     :source .
+
+:attribute  a   owl:ObjectProperty .
+
+_:b102  a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:validityEnd  a  owl:DatatypeProperty .
+
+_:b64   a                   owl:Class ;
+        owl:intersectionOf  ( _:b154 _:b146 ) .
+
+:duration  a              owl:Class ;
+        rdfs:label        "duration" ;
+        rdfs:subClassOf   :Attribute ;
+        rdfs:subClassOf   [ a                   owl:Class ;
+                            owl:intersectionOf  ( _:b148 _:b114 _:b73 _:b32 _:b157 )
+                          ] ;
+        :tag              "A_DURATION" ;
+        owl:disjointWith  :direction , :conjugated , :AND , :value , :test , :dataType , :b , :Conjunction , :XOR , :Abstraction_Level , :OR , :a , :priority , :status , :weight , :type , :verified_attribute , :cost , :operator .
+
+_:b99   a                  owl:Restriction ;
+        owl:allValuesFrom  :operator ;
+        owl:onProperty     :attribute .
+
+_:b125  a               owl:Restriction ;
+        owl:hasValue    "String" ;
+        owl:onProperty  :datatype .
+
+:XOR    a                 owl:Class ;
+        rdfs:label        "XOR" ;
+        rdfs:subClassOf   :Conjunction ;
+        :tag              "ENUM_CONJUNCTION_XOR" ;
+        owl:disjointWith  :dataType , :duration , :Functionality , :Decision , :Issue , :Actor , :a , :Solution_Artifact , :operator , :Change_Event , :direction , :Principal , :EPK-Diagramm , :weight , :Change_Proposal , :Development_Artifact , :Software , :Hardware , :Use_Case_Diagramm , :Service , :b , :State_Diagramm , :Abstraction_Level , :ER-Diagramm , :Sequence_Diagramm , :Block , :test , :View , :MechanicPort , :State , :priority , :type , :Author , :Scenario , :Activity_Diagramm , :Port , :conjugated , :Event , :Mechanic , :cost , :Activity , :Test_Case , :status , :Electronic , :verified_attribute , :SoftwarePort , :OR , :value , :Requirement , :Specification_Artifact , :Module , :Use_Case , :Class_Diagramm , :ElectronicPort , :Function , :Text , :AND .
+
+_:b71   a               owl:Restriction ;
+        owl:hasValue    "none" ;
+        owl:onProperty  :unit .
+
+:Electronic  a            owl:Class ;
+        rdfs:label        "Electronic" ;
+        rdfs:subClassOf   :Node , :Hardware ;
+        :tag              "N_ELECTRONIC" ;
+        owl:disjointWith  :Change_Proposal , :Software , :Activity_Diagramm , :Change_Event , :Text , :Conjunction , :Use_Case_Diagramm , :Activity , :MechanicPort , :Test_Case , :Principal , :ElectronicPort , :EPK-Diagramm , :State , :OR , :XOR , :a , :View , :Service , :Event , :Development_Artifact , :Port , :AND , :Actor , :Specification_Artifact , :Scenario , :ER-Diagramm , :Author , :Functionality , :Module , :State_Diagramm , :Issue , :SoftwarePort , :Sequence_Diagramm , :Function , :Mechanic , :Decision , :Use_Case , :Requirement , :Class_Diagramm .

@@ -29,7 +29,7 @@ import de.tum.pssif.core.metamodel.external.MetamodelAttribute;
 import de.tum.pssif.core.metamodel.external.MetamodelComponent;
 import de.tum.pssif.core.metamodel.external.MetamodelConjunction;
 import de.tum.pssif.core.metamodel.external.MetamodelEdge;
-import de.tum.pssif.core.metamodel.external.MetamodelExport;
+import de.tum.pssif.core.metamodel.external.MetamodelExportRDF;
 import de.tum.pssif.core.metamodel.external.MetamodelNode;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;
 import de.tum.pssif.core.model.Tupel;
@@ -56,7 +56,7 @@ public class ComponentDetailPopup {
 	private GridBagConstraints cButton;
 	private String originalTag = "";
 	private String originalName = "";
-	private MetamodelExport metamodelExport;
+	private MetamodelExportRDF metamodelExport;
 	private HashMap<String, MetamodelAttribute> potentialAttributes;
 	private ArrayList<String> nodeComponentsAsString;
 	private ArrayList<String> edgeComponentsAsString;
@@ -86,7 +86,7 @@ public class ComponentDetailPopup {
 	 *            A reference to the overview class
 	 */
 	public ComponentDetailPopup(MetamodelConjunction conjunction,
-			MetamodelExport metamodelExport,
+			MetamodelExportRDF metamodelExport,
 			ArrayList<String> conjunctionComponentsAsString,
 			MetamodelPopUp metamodelOverview) {
 
@@ -113,7 +113,7 @@ public class ComponentDetailPopup {
 	 *            A reference to the overview class
 	 */
 	public ComponentDetailPopup(MetamodelNode node,
-			MetamodelExport metamodelExport, ArrayList<String> existingNodes,
+			MetamodelExportRDF metamodelExport, ArrayList<String> existingNodes,
 			HashMap<String, MetamodelAttribute> potentialAttributes,
 			MetamodelPopUp metamodelOverview) {
 		this.node = node;
@@ -141,7 +141,7 @@ public class ComponentDetailPopup {
 	 *            A reference to the overview class
 	 */
 	public ComponentDetailPopup(MetamodelEdge edge,
-			MetamodelExport metamodelExport, ArrayList<String> existingEdges,
+			MetamodelExportRDF metamodelExport, ArrayList<String> existingEdges,
 			ArrayList<String> potentialMappingComponents,
 			MetamodelPopUp metamodelOverview) {
 		this.edge = edge;
@@ -169,7 +169,7 @@ public class ComponentDetailPopup {
 	 *            A reference to the overview class
 	 */
 	public ComponentDetailPopup(MetamodelAttribute attribute,
-			MetamodelExport metamodelExport,
+			MetamodelExportRDF metamodelExport,
 			ArrayList<String> existingComponents,
 			MetamodelPopUp metamodelOverview) {
 

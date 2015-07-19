@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-import reqtool.graph.TestCaseValidatorPopup;
 import model.ModelBuilder;
+import reqtool.graph.TestCaseValidatorPopup;
 import de.tum.pssif.core.metamodel.Attribute;
 import de.tum.pssif.core.metamodel.DataType;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;

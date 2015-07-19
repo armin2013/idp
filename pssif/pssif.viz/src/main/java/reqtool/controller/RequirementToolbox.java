@@ -3,11 +3,11 @@ package reqtool.controller;
 import java.util.LinkedList;
 import java.util.Vector;
 
+import model.ModelBuilder;
 import graph.model.MyEdge;
 import graph.model.MyEdgeType;
 import graph.model.MyNode;
 import graph.model.MyNodeType;
-import model.ModelBuilder;
 import de.tum.pssif.core.common.PSSIFOption;
 import de.tum.pssif.core.common.PSSIFValue;
 import de.tum.pssif.core.metamodel.Attribute;

@@ -1,0 +1,121 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/epc/ns#> .
+@prefix graph:  <http://www.sfb768.tum.de/voc/graph/ns#> .
+
+[rdfs2:  (?x ?p ?y), (?p rdfs:domain ?c) -> (?x rdf:type ?c)]
+[rdfs3:  (?x ?p ?y), (?p rdfs:range ?c) -> (?y rdf:type ?c)]
+[rdfs6:  (?a ?p ?b), (?p rdfs:subPropertyOf ?q) -> (?a ?q ?b)]
+[rdfs9:  (?x rdfs:subClassOf ?y), (?a rdf:type ?x) -> (?a rdf:type ?y)]
+
+[EPC_Performs:
+
+		(?s	rdf:type pssif:Performs)
+		(?s pssif:Source ?in)
+		(?s pssif:Target ?out)
+		->
+		(?in epc:performs ?out) 
+		makeSkolem(?s, ?in, ?out)
+
+]
+
+[EPC_ControlFlow: 	
+					(?c rdf:type pssif:ControlFlow )
+					(?c	pssif:Source ?s )
+					(?c	pssif:Target ?t )
+					->
+					(?s epc:flow ?t)
+]
+
+[EPC_Organization:
+	
+		(?s	rdf:type pssif:StructuralArtifact)
+		(?s graph:PSSIF_aliased_key "Organizational unit")
+		->
+		(?s rdf:type epc:Organizational_Unit)
+]
+
+[EPC_Function: 	
+
+			(?s rdf:type pssif:Activity )
+			->
+			(?s rdf:type epc:Function)
+				
+]
+		
+[EPC_Event: 
+			(?s rdf:type pssif:State )
+			->
+			(?s rdf:type epc:Event)
+]
+
+[EPC_Name:			
+			(?s	pssif:Name ?n )
+			->
+			(?s epc:name ?n ) 
+]
+
+[PSSIF_Node:
+		(?s rdf:type graph:Node)
+		->
+		(?s rdf:type pssif:Node)
+]
+
+[PSSIF_Attribute:
+		(?n rdf:type graph:Attribute)
+		(?n graph:value ?v) 
+		(?s graph:unit ?u)
+		->
+		(?s rdf:type pssif:Attribute)
+		(?s pssif:VALUE ?v)
+		(?s pssif:UNIT ?u)
+]
+
+[PSSIF_Name:
+
+	(?s graph:name ?n)
+	(?n rdf:type graph:Attribute)
+	(?n graph:value ?name)
+	->	
+	(?s pssif:Name ?name)
+
+]
+
+[PSSIF_GlobalID:
+
+	(?s graph:globalId ?g)
+	(?g graph:value ?gid)
+	->
+	(?s pssif:GlobalID ?gid)
+]
+
+
+[PSSIF_Edge_1:
+	(?e rdf:type ?t1)
+	(?t1 rdfs:subClassOf ?x)
+	noValue(?x  rdf:type ?t1)
+	(?t1 rdfs:subClassOf pssif:Edge)
+	(?e graph:in ?in)
+	(?e graph:out ?out)
+	->
+	(?e rdf:type ?t1)
+	(?e pssif:Source ?in)
+	(?e pssif:Target ?out)
+]
+
+
+[PSSIF-Type_1: 		
+				(?e graph:type ?type)
+				(?x rdfs:label ?type)
+				(?x rdfs:subClassOf ?y)
+				noValue(?y rdfs:label ?type)
+				->
+				(?e rdf:type ?x)
+]
+
+[PSSIF-Type_2: 	
+				(?e graph:type ?type)
+				noValue(?t rdfs:label ?type)
+				strConcat("http://www.sfb768.tum.de/voc/pssif/ns#", ?type, ?t)
+				->
+				(?e rdf:type ?t)
+]

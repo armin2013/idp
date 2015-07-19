@@ -31,7 +31,7 @@ public class MetamodelImport {
 			XMLReader xmlReader = XMLReaderFactory.createXMLReader();
 
 			// Path to file
-			String path = System.getProperty("user.dir");
+			// String path = System.getProperty("user.dir");
 			// FileReader reader = new FileReader(path.substring(0,
 			// path.length()-9) + "Meta-Modell.xml");
 			FileReader reader = new FileReader("C:\\Users\\Meta-Modell.xml");

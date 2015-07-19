@@ -12,70 +12,69 @@ import de.tum.pssif.core.model.Edge;
 import de.tum.pssif.core.model.Model;
 import de.tum.pssif.core.model.Node;
 
-
 public class UnjoinedEdge implements Edge {
-  private final Edge baseEdge;
-  private final Node unjoinedFrom;
-  private final Node unjoinedTo;
+	private final Edge baseEdge;
+	private final Node unjoinedFrom;
+	private final Node unjoinedTo;
 
-  public UnjoinedEdge(Edge baseEdge, Node unjoinedFrom, Node unjoinedTo) {
-    this.baseEdge = baseEdge;
-    this.unjoinedFrom = unjoinedFrom;
-    this.unjoinedTo = unjoinedTo;
-  }
+	public UnjoinedEdge(Edge baseEdge, Node unjoinedFrom, Node unjoinedTo) {
+		this.baseEdge = baseEdge;
+		this.unjoinedFrom = unjoinedFrom;
+		this.unjoinedTo = unjoinedTo;
+	}
 
-  @Override
-  public Model getModel() {
-    return baseEdge.getModel();
-  }
+	@Override
+	public Model getModel() {
+		return baseEdge.getModel();
+	}
 
-  @Override
-  public void setId(String id) {
-    baseEdge.setId(id);
-  }
+	@Override
+	public void setId(String id) {
+		baseEdge.setId(id);
+	}
 
-  @Override
-  public String getId() {
-    return baseEdge.getId();
-  }
+	@Override
+	public String getId() {
+		return baseEdge.getId();
+	}
 
-  @Override
-  public void apply(SetValueOperation op) {
-    baseEdge.apply(op);
-  }
+	@Override
+	public void apply(SetValueOperation op) {
+		baseEdge.apply(op);
+	}
 
-  @Override
-  public PSSIFOption<PSSIFValue> apply(GetValueOperation op) {
-    return baseEdge.apply(op);
-  }
+	@Override
+	public PSSIFOption<PSSIFValue> apply(GetValueOperation op) {
+		return baseEdge.apply(op);
+	}
 
-  @Override
-  public void annotate(String key, String value) {
-    baseEdge.annotate(key, value);
-  }
+	@Override
+	public void annotate(String key, String value) {
+		baseEdge.annotate(key, value);
+	}
 
-  @Override
-  public void annotate(String key, String value, boolean overwrite) {
-    baseEdge.annotate(key, value, overwrite);
-  }
+	@Override
+	public void annotate(String key, String value, boolean overwrite) {
+		baseEdge.annotate(key, value, overwrite);
+	}
 
-  @Override
-  public PSSIFOption<Entry<String, String>> getAnnotations() {
-    return baseEdge.getAnnotations();
-  }
+	@Override
+	public PSSIFOption<Entry<String, String>> getAnnotations() {
+		return baseEdge.getAnnotations();
+	}
 
-  @Override
-  public PSSIFOption<String> getAnnotation(String key) {
-    return baseEdge.getAnnotation(key);
-  }
+	@Override
+	public PSSIFOption<String> getAnnotation(String key) {
+		return baseEdge.getAnnotation(key);
+	}
 
-  @Override
-  public Node apply(ReadFromNodesOperation op) {
-    return unjoinedFrom;
-  }
+	@Override
+	public Node apply(ReadFromNodesOperation op) {
+		return unjoinedFrom;
+	}
 
-  @Override
-  public Node apply(ReadToNodesOperation op) {
-    return unjoinedTo;
-  }
+	@Override
+	public Node apply(ReadToNodesOperation op) {
+		return unjoinedTo;
+	}
 }

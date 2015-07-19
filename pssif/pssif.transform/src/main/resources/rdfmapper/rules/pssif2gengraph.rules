@@ -1,0 +1,43 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/epc#> .
+@prefix graph:  <http://www.sfb768.tum.de/voc/graph#> .
+@prefix graphattr:  <http://www.sfb768.tum.de/voc/graph/Attr#> .
+@prefix graphannot:  <http://www.sfb768.tum.de/voc/graph/Annot#> .
+
+[Graph_Node:
+		(?s rdf:type ?type)
+		(?s pssif:name ?name )
+		(?s pssif:GlobalID ?globalid)
+		strConcat(?type, ?t)
+		makeSkolem(?g, ?globalid)
+		makeSkolem(?n, ?globalid, ?name)
+		->
+		(?s graphattr:globalId ?g)
+		(?g graphattr:VALUE ?globalid)
+		(?s graphattr:name ?n)
+		(?n graphattr:VALUE ?name) 
+		(?s graph:Type ?t) 
+		uriConcat('http://www.sfb768.tum.de/ont/sample_epc#', ?globalid,?su)
+		uriConcat('http://www.sfb768.tum.de/voc/pssif/ns#', ?t, ?type)
+]
+
+
+[Graph_Edge:
+	(?su rdf:Type ?t1)
+	(?su pssif:Source ?s1)
+	(?s1 pssif:GlobalID ?gid1)
+	(?su pssif:Target ?s2)
+	(?s2 pssif:GlobalID ?gid2)
+ 	makeSkolem(?in, ?su, ?s1) 
+ 	makeSkolem(?g1, ?in)
+ 	makeSkolem(?out, ?su, ?s2) 
+ 	makeSkolem(?g2, ?out)
+	->
+	(?su graph:Type strConcat(?t1))
+	(?su graph:in ?in)
+	(?su graph:out ?out)
+	(?in graphattr:globalId ?s1)
+	(?out graphattr:globalId ?s2)
+	(?g1 graphattr:VALUE ?gid1)
+	(?g2 graphattr:VALUE ?gid2)
+]

@@ -9,7 +9,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.ModelBuilder;
-import de.tum.pssif.core.metamodel.EdgeType;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;
 
 /**

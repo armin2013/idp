@@ -18,11 +18,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.ModelBuilder;
+
 import org.apache.poi.hssf.util.HSSFColor.YELLOW;
 
 import de.tum.pssif.core.metamodel.NodeType;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;
-import model.ModelBuilder;
 
 /**
  * The Class SpecificationNodePopup.

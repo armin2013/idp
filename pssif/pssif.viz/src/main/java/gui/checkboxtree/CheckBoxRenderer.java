@@ -20,7 +20,12 @@ import javax.swing.tree.TreeCellRenderer;
  *
  */
 public class CheckBoxRenderer extends JPanel implements TreeCellRenderer {
-	  protected JCheckBox check;
+	  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected JCheckBox check;
 
 	  protected TreeLabel label;
 
@@ -83,7 +88,8 @@ public class CheckBoxRenderer extends JPanel implements TreeCellRenderer {
 	    super.setBackground(color);
 	  }
 
-	  public class TreeLabel extends JLabel {
+	  @SuppressWarnings("serial")
+	public class TreeLabel extends JLabel {
 	    boolean isSelected;
 
 	    boolean hasFocus;

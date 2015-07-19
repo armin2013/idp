@@ -162,7 +162,8 @@ public class AttributeFilterPopup extends MyPopup{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				 JComboBox<String> cb = (JComboBox<String>)e.getSource();
+				 @SuppressWarnings("unchecked")
+				JComboBox<String> cb = ((JComboBox<String>)e.getSource());
 				 if (cb.getSelectedItem()!=null)
 				 {
 				     String attrName = (String)cb.getSelectedItem();

@@ -1,0 +1,126 @@
+@prefix : 		<http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix owl: 	<http://www.w3.org/2002/07/owl#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: 	<http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: 	<http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+
+
+
+#---------------------------------------------------------------------------------------------------#
+# PSSIF vocabulary meta-level.																		#
+#---------------------------------------------------------------------------------------------------#
+
+:Element			rdf:type 	rdfs:Class 	.	# Basic Element.
+:Edge				rdf:type 	rdfs:Class 	;	# Basic Edge between two Nodes.
+					rdfs:subClassOf :Element.
+:DirectedEdge		rdfs:subClassOf :Edge.
+:Node				rdf:type 	rdfs:Class 	;	# Basic Node.
+					rdfs:subClassOf :Element.
+:Attribute			rdf:type 	rdfs:Class 	;	# Basic Attribute.
+					rdfs:subClassOf :Element.
+					
+#---------------------------------------------------------------------------------------------------#
+# PSSIF vocabulary edges.																			#
+#---------------------------------------------------------------------------------------------------#
+
+# Edge types. #################################################
+:Flow 				rdf:type 	rdfs:Class 	;	# Flow between two Solution Artifacts.
+					rdfs:subClassOf :Edge   .
+:Relation 			rdf:type 	rdfs:Class 	; 	# Relation between two Nodes.
+					rdfs:subClassOf :Edge   .
+
+# Flow types. #################################################
+
+:InformationFlow 	rdf:type 	rdfs:Class 	;	# Information flow between two Solution Artifacts.
+					rdfs:label	"Information Flow";
+					rdfs:subClassOf :Flow   .
+:EnergyFlow 		rdf:type 	rdfs:Class 	; 	# Energy flow between two Solution Artifacts.
+					rdfs:subClassOf :Flow   .
+:MaterialFlow 		rdf:type 	rdfs:Class 	;	# Material flow between two Solution Artifacts.
+					rdfs:subClassOf :Flow   .
+:ControlFlow 		rdf:type 	rdfs:Class 	; 	# Control flow between two Solution Artifacts.
+					rdfs:subClassOf 	:DirectedEdge ;
+					rdfs:label	"Control Flow";
+					rdfs:subClassOf :Flow   .
+:ValueFlow 			rdf:type 	rdfs:Class 	; 	# Value flow between two Solution Artifacts.
+					rdfs:subClassOf :Flow   .				
+					
+# Relation types. #################################################
+
+:ChronologicRelation 	rdf:type 	rdfs:Class 		;	# Chronologic Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .
+:ReferencialRelation 	rdf:type 	rdfs:Class 		;	# Referencial Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .
+:InclusionRelation 		rdf:type 	rdfs:Class 		;	# Inclusion Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .
+:CausalRelation 		rdf:type 	rdfs:Class 		;	# Causal Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .												
+:LogicalRelation 		rdf:type 	rdfs:Class 		;	# Logical Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .
+:AttributionalRelation 	rdf:type 	rdfs:Class 		;	# Attributional Relation between two Artifacts.
+						rdfs:subClassOf :Relation   .
+
+# Relation types. #################################################
+
+:Performs			 	rdf:type 	rdfs:Class 		;	# 
+						rdfs:subClassOf 	:DirectedEdge ;
+						rdfs:label	"Performs"		;
+						rdfs:subClassOf :AttributionalRelation   .						
+
+#---------------------------------------------------------------------------------------------------#
+# PSSIF vocabulary nodes.																			#
+#---------------------------------------------------------------------------------------------------#
+
+# Node types. #################################################
+:DevelopmentArtifact			rdf:type 	rdfs:Class 	;	# Development Artifacts are NOT part of the Solution.
+								rdfs:subClassOf :Node.
+:SolutionArtifact				rdf:type 	rdfs:Class 	;	# Solution Artifacts are part of the Solution.
+								rdfs:subClassOf :Node.
+
+# Development Artifact types. #################################################
+:RequirementArtifact			rdf:type 	rdfs:Class 	;	# Container for Content related to one Requirement.
+								rdfs:subClassOf :DevelopmentArtifact.
+:ManagementArtifact				rdf:type 	rdfs:Class 	;	# Abstraction Levels, etc.
+								rdfs:subClassOf :DevelopmentArtifact.
+:TestArtifact					rdf:type 	rdfs:Class 	;	# Test Cases, etc.
+								rdfs:subClassOf :DevelopmentArtifact.
+:DiagramArtifact				rdf:type 	rdfs:Class 	;	# Containers for Diagrams.
+								rdfs:subClassOf :DevelopmentArtifact.
+
+# Solution Artifact types. #################################################
+:StructuralArtifact				rdf:type 	rdfs:Class 	;	# 
+								rdfs:label	"Block" ;
+								rdfs:subClassOf :SolutionArtifact.
+:Actor							rdf:type 	rdfs:Class 	;	# 
+								rdfs:subClassOf :StructuralArtifact;
+								rdfs:label	"Actor".
+:BehavioralArtifact				rdf:type 	rdfs:Class 	;	# 
+								rdfs:subClassOf :SolutionArtifact.
+:Activity						rdf:type 	rdfs:Class 	;	# 
+								rdfs:label	"Activity";
+								rdfs:subClassOf :BehavioralArtifact.
+:State							rdf:type 	rdfs:Class 	;	# 
+								rdfs:label	"State";
+								rdfs:subClassOf :BehavioralArtifact.
+
+#---------------------------------------------------------------------------------------------------#
+# PSSIF vocabulary Attributes.																		#
+#---------------------------------------------------------------------------------------------------#						
+:GlobalID				rdf:type		rdfs:Property 		;
+						rdfs:domain		:Element			.
+:Name					rdf:type		rdfs:Property 		;
+						rdfs:domain		:Element			.
+:Target					rdf:type		rdfs:Property 		;
+						rdfs:domain		:Edge				.
+:Source					rdf:type		rdfs:Property 		;
+						rdfs:domain		:Edge				.
+:Duration				rdf:type		rdfs:Class 			;
+						rdfs:subClassOf	:Attribute			.
+:Cost					rdf:type		rdfs:Class	 		;
+						rdfs:subClassOf	:Attribute			.
+						
+:UNIT					rdf:type		rdfs:Property		;
+						rdfs:domain		:Attribute			.
+:VALUE					rdf:type		rdfs:Property		;
+						rdfs:domain		:Attribute			.

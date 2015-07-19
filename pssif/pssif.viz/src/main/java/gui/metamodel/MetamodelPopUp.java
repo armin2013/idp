@@ -31,7 +31,7 @@ import de.tum.pssif.core.metamodel.external.MetamodelAttribute;
 import de.tum.pssif.core.metamodel.external.MetamodelComponent;
 import de.tum.pssif.core.metamodel.external.MetamodelConjunction;
 import de.tum.pssif.core.metamodel.external.MetamodelEdge;
-import de.tum.pssif.core.metamodel.external.MetamodelExport;
+import de.tum.pssif.core.metamodel.external.MetamodelExportRDF;
 import de.tum.pssif.core.metamodel.external.MetamodelNode;
 import de.tum.pssif.core.metamodel.external.PSSIFCanonicMetamodelCreator;
 
@@ -59,7 +59,7 @@ public class MetamodelPopUp {
 	private JScrollPane edgeScroller;
 	private JScrollPane nodeScroller;
 	private JScrollPane attributeScroller;
-	private MetamodelExport metamodelExport;
+	private MetamodelExportRDF metamodelExport;
 	private HashMap<String, MetamodelConjunction> conjunctions;
 	private HashMap<String, MetamodelNode> nodes;
 	private HashMap<String, MetamodelEdge> edges;
@@ -462,7 +462,7 @@ public class MetamodelPopUp {
 	 */
 	private void reloadData() {
 		PSSIFCanonicMetamodelCreator.loadXMLData();
-		metamodelExport = new MetamodelExport();
+		metamodelExport = new MetamodelExportRDF();
 
 		// Get and sort all components of each type category
 		conjunctions = PSSIFCanonicMetamodelCreator.conjunctions;

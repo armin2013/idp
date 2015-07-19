@@ -65,6 +65,22 @@ public class ModelImpl implements Model {
 	@Override
 	public Edge apply(CreateEdgeOperation op) {
 		Edge result = new EdgeImpl(this, op.getFrom(), op.getTo());
+
+		/**
+		 * @author Andrea
+		 */
+
+		PSSIFOption<Attribute> globalIdAttribute = op.getType().getAttribute(
+				PSSIFConstants.BUILTIN_ATTRIBUTE_GLOBAL_ID);
+
+		globalIdAttribute.getOne()
+				.set(result,
+						PSSIFOption.one(PSSIFValue.create(UUID.randomUUID()
+								.toString())));
+		/**
+		 * until here
+		 */
+
 		edges.put(new ConnectionMappingSignature(op.getMapping()), result);
 		return result;
 	}

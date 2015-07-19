@@ -7,23 +7,22 @@ import de.tum.pssif.core.common.PSSIFValue;
 import de.tum.pssif.core.metamodel.impl.GetValueOperation;
 import de.tum.pssif.core.metamodel.impl.SetValueOperation;
 
-
 public interface Element {
-  Model getModel();
+	Model getModel();
 
-  void setId(String id);
+	void setId(String id);
 
-  String getId();
+	String getId();
 
-  void apply(SetValueOperation op);
+	void apply(SetValueOperation op);
 
-  PSSIFOption<PSSIFValue> apply(GetValueOperation op);
+	PSSIFOption<PSSIFValue> apply(GetValueOperation op);
 
-  void annotate(String key, String value);
+	void annotate(String key, String value);
 
-  void annotate(String key, String value, boolean overwrite);
+	void annotate(String key, String value, boolean overwrite);
 
-  PSSIFOption<Entry<String, String>> getAnnotations();
+	PSSIFOption<Entry<String, String>> getAnnotations();
 
-  PSSIFOption<String> getAnnotation(String key);
+	PSSIFOption<String> getAnnotation(String key);
 }

@@ -1,0 +1,48 @@
+@prefix pssif: <http://www.sfb768.tum.de/voc/pssif/ns#> .
+@prefix epc: <http://www.sfb768.tum.de/voc/epc/ns#> .
+@prefix pssif:  <http://www.sfb768.tum.de/voc/pssif/ns#> .
+
+
+
+[PSSIF_Name:
+	(?s pssif:name ?name)
+	makeSkolem(?n, ?s, ?name)
+	->
+	(?s pssif:attribute ?n)
+	(?n rdf:type pssif:Attribute)
+	(?n pssif:name "name")
+	(?n pssif:datatype "String")
+	(?n pssif:category "MetaData")
+	(?n pssif:unit "none")
+	(?n pssif:value ?name)
+]
+
+[PSSIF_GlobalID:
+	(?s pssif:globalID ?gid)
+	makeSkolem(?n, ?s, ?gid)
+	->
+	(?s pssif:attribute ?n)
+	(?n rdf:type pssif:Attribute)
+	(?n pssif:name "globalId")
+	(?n pssif:datatype "String")
+	(?n pssif:category "MetaData")
+	(?n pssif:unit "none")
+	(?n pssif:value ?gid)
+]
+
+
+[PSSIF_Flow_1:
+	(?e rdf:type ?t1)
+	(?t1 rdfs:subClassOf pssif:Edge)
+	(?e pssif:Source ?in)
+	(?e pssif:Target ?out)
+	makeSkolem(?d, ?e, ?in, ?out)
+	->
+	(?e pssif:attribute ?d)
+	(?d rdf:type pssif:Attribute)
+	(?d pssif:name "directed")
+	(?d pssif:value "true")
+	(?d pssif:category "MetaData")
+	(?d pssif:datatype "Boolean")
+	(?d pssif:unit "none")
+]

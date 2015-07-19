@@ -51,7 +51,7 @@ public class NodeColorPopup extends MyPopup{
 	 */
 	private JPanel createPanel()
 	{
-		JPanel bannerPanel = new JPanel(new GridLayout());;
+		JPanel bannerPanel = new JPanel(new GridLayout());
 		
 		MyNodeType[] nodetypes = ModelBuilder.getNodeTypes().getAllNodeTypesArray();
 		
@@ -98,7 +98,7 @@ public class NodeColorPopup extends MyPopup{
 		panel = createPanel();
 		
 		int dialogResult = JOptionPane.showConfirmDialog(null, panel, "Choose Nodes Colors", JOptionPane.DEFAULT_OPTION);
-		
+
 		evalDialog(dialogResult);
 	}
 }
